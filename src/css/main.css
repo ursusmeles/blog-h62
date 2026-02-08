@@ -3,60 +3,226 @@
  * System: CUBE CSS Architecture
  */
 
-/* 1. LAYER MANIFEST (Priority order) */
+/* LAYER MANIFEST */
 @layer reset, tokens, base, composition, utilities, blocks;
 
-/* 2. FONT DEFINITION */
+/* FONTS DEFINITION */
 @font-face {
   font-family: 'ABC Solar';
   src: url('/fonts/abcsolar.woff2') format('woff2');
-  font-weight: 400; /* Adjust if you have Bold/Light files */
+  font-weight: 400;
   font-style: normal;
-  font-display: swap; /* Performance: shows system font until brand font loads */
+  font-display: swap;
 }
 
-/* 3. TOKENS LAYER (Design Decisions) */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('/fonts/ibm-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('/fonts/ibm-italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IBM Plex Sans';
+  src: url('/fonts/ibm-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* TOKENS */
 @layer tokens {
   :root {
-    /* Brand Colors (OKLCH) */
+    /*  Colors (OKLCH) */
     --h: 250; /* Primary brand hue */
     --color-primary: oklch(65% 0.18 var(--h));
     --color-bg: oklch(98% 0.01 var(--h));
     --color-text: oklch(20% 0.03 var(--h));
     
-    /* Fluid Sizing (Clamp) */
+    /* Sizings */
     --gutter: clamp(1rem, 5vw, 3rem);
-    --stack-gap: clamp(1.25rem, 5vw, 2.5rem);
+    --grid-gap: clamp(1.25rem, 5vw, 2.5rem);
+    /* Spacing Scale */
+    /* @link https://utopia.fyi/space/calculator?c=360,16,1.125,1440,18,1.2,5,1,&s=0.75|0.5|0.25,1.5|2|3|4|6|10,s-4xl&g=s,l,xl,12 */
+    --space-3xs: clamp(0.25rem, 0.2292rem + 0.0926vw, 0.3125rem);
+    --space-2xs: clamp(0.5rem, 0.4792rem + 0.0926vw, 0.5625rem);
+    --space-xs: clamp(0.75rem, 0.7083rem + 0.1852vw, 0.875rem);
+    --space-s: clamp(1rem, 0.9583rem + 0.1852vw, 1.125rem);
+    --space-m: clamp(1.5rem, 1.4375rem + 0.2778vw, 1.6875rem);
+    --space-l: clamp(2rem, 1.9167rem + 0.3704vw, 2.25rem);
+    --space-xl: clamp(3rem, 2.875rem + 0.5556vw, 3.375rem);
+    --space-2xl: clamp(4rem, 3.8333rem + 0.7407vw, 4.5rem);
+    --space-3xl: clamp(6rem, 5.75rem + 1.1111vw, 6.75rem);
+    --space-4xl: clamp(10rem, 9.5833rem + 1.8519vw, 11.25rem);
+    /* One-up pairs */
+    --space-3xs-2xs: clamp(0.25rem, 0.1458rem + 0.463vw, 0.5625rem);
+    --space-2xs-xs: clamp(0.5rem, 0.375rem + 0.5556vw, 0.875rem);
+    --space-xs-s: clamp(0.75rem, 0.625rem + 0.5556vw, 1.125rem);
+    --space-s-m: clamp(1rem, 0.7708rem + 1.0185vw, 1.6875rem);
+    --space-m-l: clamp(1.5rem, 1.25rem + 1.1111vw, 2.25rem);
+    --space-l-xl: clamp(2rem, 1.5417rem + 2.037vw, 3.375rem);
+    --space-xl-2xl: clamp(3rem, 2.5rem + 2.2222vw, 4.5rem);
+    --space-2xl-3xl: clamp(4rem, 3.0833rem + 4.0741vw, 6.75rem);
+    --space-3xl-4xl: clamp(6rem, 4.25rem + 7.7778vw, 11.25rem);
+    /* Custom pairs */
+    --space-s-4xl: clamp(1rem, -2.4167rem + 15.1852vw, 11.25rem);
     
+    /* Type scale */
+    --step--1: clamp(0.8889rem, 0.8727rem + 0.072vw, 0.9375rem);
+    --step-0: clamp(1rem, 0.9583rem + 0.1852vw, 1.125rem);
+    --step-1: clamp(1.125rem, 1.05rem + 0.3333vw, 1.35rem);
+    --step-2: clamp(1.2656rem, 1.1475rem + 0.525vw, 1.62rem);
+    --step-3: clamp(1.4238rem, 1.2504rem + 0.7706vw, 1.944rem);
+    --step-4: clamp(1.6018rem, 1.3581rem + 1.083vw, 2.3328rem);
+    --step-5: clamp(1.802rem, 1.4696rem + 1.4775vw, 2.7994rem);
     /* Typography */
     --font-brand: 'ABC Solar', system-ui, sans-serif;
-    --font-base: system-ui, -apple-system, sans-serif;
+    --font-base: 'IBM Plex Sans', system-ui, sans-serif;
+    /* Leading (Line Height) */
+    --tight: 1.1;
+    --mid: 1.3;
+    --loose: 1.6;
   }
 }
 
-/* 4. RESET LAYER (The "Normalizer") */
+/* RESET */
 @layer reset {
-  *, *::before, *::after { box-sizing: border-box; }
-  body, h1, h2, h3, p, figure { margin: 0; padding: 0; }
-  ul[role='list'], ol[role='list'] { list-style: none; padding: 0; }
-  img { max-width: 100%; display: block; height: auto; }
-  input, button, textarea, select { font: inherit; }
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-/* 5. BASE LAYER (Global Element Styling) */
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4, h5,
+button, input, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4, h5 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+}
+
+/* BASE (global element styling) */
 @layer base {
   body {
     background-color: var(--color-bg);
-    color: var(--color-text);
     font-family: var(--font-base);
-    line-height: 1.6;
-    text-rendering: optimizeSpeed;
+    font-size: var(--step-0);
+    line-height: var(--loose);
+    color: var(--color-text);
   }
 
-  h1, h2, h3 {
+  h1, h2, h3, h4 {
     font-family: var(--font-brand);
-    line-height: 1.1;
-    text-wrap: balance; /* Prevents awkward single-word lines */
+    color: var(--color-text);
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-size: var(--step-5);
+    line-height: var(--tight);
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-size: var(--step-4);
+    line-height: var(--tight);
+    letter-spacing: -0.015em;
+  }
+
+  h3 {
+    font-size: var(--step-3);
+    line-height: var(--mid);
+    letter-spacing: -0.01em;
+  }
+
+  h4 {
+    font-size: var(--step-2);
+    line-height: var(--mid);
+    letter-spacing: -0.005em;
+  }
+
+  h5 {
+    font-family: var(--font-base);
+    font-size: var(--step-1);
+    font-weight: 700;
+    line-height: var(--mid);
+    letter-spacing: normal;
+  }
+
+  p {
+    max-width: 70ch;
   }
 
   a {
@@ -65,7 +231,7 @@
   }
 }
 
-/* 6. COMPOSITION LAYER (The "C" in CUBE - Structural patterns) */
+/* 6. COMPOSITION (structural patterns) */
 @layer composition {
   .wrapper {
     max-width: 70rem;
@@ -73,20 +239,32 @@
     padding-inline: var(--gutter);
   }
 
-  /* The legendary CUBE 'Flow' Utility */
   .flow > * + * {
-    margin-block-start: var(--stack-gap);
+    margin-block-start: var(--flow-space, 1.5em);
   }
+
+  .stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.stack > * {
+  margin-block: 0;
+} 
+
+.stack > * + * {
+  margin-block-start: var(--stack-space, 1.5rem);
+}
   
-  /* Modern Grid System */
   .grid {
     display: grid;
-    gap: var(--stack-gap);
+    gap: var(--grid-gap);
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 1fr));
   }
 }
 
-/* 7. UTILITIES LAYER (The "U" in CUBE - Single purpose) */
+/* UTILITIES LAYER (single purpose classes)*/
 @layer utilities {
   .visually-hidden {
     clip: rect(0 0 0 0);
@@ -101,7 +279,7 @@
   .text-primary { color: var(--color-primary); }
 }
 
-/* 8. BLOCKS LAYER (The "B" in CUBE - Specific components) */
+/* BLOCKS LAYER (specific components) */
 @layer blocks {
-  /* This is where you'll style things like .post-card later */
+  /* TBD */
 }
