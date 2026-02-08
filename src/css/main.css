@@ -1,0 +1,107 @@
+/**
+ * HELIOCANTHARUS RPG | blog.h62.pl
+ * System: CUBE CSS Architecture
+ */
+
+/* 1. LAYER MANIFEST (Priority order) */
+@layer reset, tokens, base, composition, utilities, blocks;
+
+/* 2. FONT DEFINITION */
+@font-face {
+  font-family: 'ABC Solar';
+  src: url('/fonts/abcsolar.woff2') format('woff2');
+  font-weight: 400; /* Adjust if you have Bold/Light files */
+  font-style: normal;
+  font-display: swap; /* Performance: shows system font until brand font loads */
+}
+
+/* 3. TOKENS LAYER (Design Decisions) */
+@layer tokens {
+  :root {
+    /* Brand Colors (OKLCH) */
+    --h: 250; /* Primary brand hue */
+    --color-primary: oklch(65% 0.18 var(--h));
+    --color-bg: oklch(98% 0.01 var(--h));
+    --color-text: oklch(20% 0.03 var(--h));
+    
+    /* Fluid Sizing (Clamp) */
+    --gutter: clamp(1rem, 5vw, 3rem);
+    --stack-gap: clamp(1.25rem, 5vw, 2.5rem);
+    
+    /* Typography */
+    --font-brand: 'ABC Solar', system-ui, sans-serif;
+    --font-base: system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* 4. RESET LAYER (The "Normalizer") */
+@layer reset {
+  *, *::before, *::after { box-sizing: border-box; }
+  body, h1, h2, h3, p, figure { margin: 0; padding: 0; }
+  ul[role='list'], ol[role='list'] { list-style: none; padding: 0; }
+  img { max-width: 100%; display: block; height: auto; }
+  input, button, textarea, select { font: inherit; }
+}
+
+/* 5. BASE LAYER (Global Element Styling) */
+@layer base {
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-base);
+    line-height: 1.6;
+    text-rendering: optimizeSpeed;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-brand);
+    line-height: 1.1;
+    text-wrap: balance; /* Prevents awkward single-word lines */
+  }
+
+  a {
+    color: var(--color-primary);
+    text-underline-offset: 0.2ex;
+  }
+}
+
+/* 6. COMPOSITION LAYER (The "C" in CUBE - Structural patterns) */
+@layer composition {
+  .wrapper {
+    max-width: 70rem;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  /* The legendary CUBE 'Flow' Utility */
+  .flow > * + * {
+    margin-block-start: var(--stack-gap);
+  }
+  
+  /* Modern Grid System */
+  .grid {
+    display: grid;
+    gap: var(--stack-gap);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 1fr));
+  }
+}
+
+/* 7. UTILITIES LAYER (The "U" in CUBE - Single purpose) */
+@layer utilities {
+  .visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+  
+  .text-primary { color: var(--color-primary); }
+}
+
+/* 8. BLOCKS LAYER (The "B" in CUBE - Specific components) */
+@layer blocks {
+  /* This is where you'll style things like .post-card later */
+}

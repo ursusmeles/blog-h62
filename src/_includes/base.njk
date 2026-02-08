@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="canonical" href="https://blog.h62.pl{{ page.url }}">
+  <title>{{ title }} | Heliocantharus RPG</title>
+
+  <meta name="description" content="{{ description or 'Materiały RPG, tabele i poradniki do stylu gry typu sandbox' }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://blog.h62.pl{{ page.url }}">
+  <meta property="og:title" content="{{ title }} | Heliocantharus RPG">
+  <meta property="og:description" content="{{ description or 'Materiały RPG, tabele i poradniki do stylu gry typu sandbox' }}">
+  <meta property="og:image" content="https://blog.h62.pl/images/{{ og_image or 'heliocantharus.png' }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ title }} | Heliocantharus RPG">
+  <meta name="twitter:description" content="{{ description or 'Materiały RPG, tabele i poradniki do stylu gry typu sandbox' }}">
+  <meta name="twitter:image" content="https://blog.h62.pl/images/{{ og_image or 'heliocantharus.png' }}">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Przejdź do treści</a>
+
+  <header class="site-header wrapper">
+    <div class="site-header__inner">
+      <a href="/" class="logo" aria-label="Heliocantharus">
+        <strong>Heliocantharus</strong>
+      </a>
+
+      <nav aria-label="Główna nawigacja">
+        <ul role="list" class="nav-list">
+          <li><a href="/" {{ 'aria-current=page' if page.url == '/' }}>Start</a></li>
+          <li><a href="/blog/" {{ 'aria-current=page' if page.url == '/blog/' }}>Blog</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <article class="wrapper flow">
+      {% if title %}
+        <h1>{{ title }}</h1>
+      {% endif %}
+       {% if description %}
+      <span>{{ description }}</span>
+      {% endif %}
+      {{ content | safe }}
+    </article>
+  </main>
+
+  <footer class="site-footer wrapper">
+    <div class="site-footer__inner">
+      <p>&copy; Mateusz Nowak | <a href="https://h62.pl">Helio62</a></p>
+      
+      <nav aria-label="Stopka">
+        <ul role="list" class="nav-list nav-list--footer">
+          <li><a href="/privacy/">Polityka prywatności</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
