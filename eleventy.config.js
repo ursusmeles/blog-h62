@@ -6,6 +6,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/*.ico");
   eleventyConfig.addPassthroughCopy("src/*.svg");
   eleventyConfig.addPassthroughCopy("src/*.png");
+  eleventyConfig.addPassthroughCopy("src/*.webmanifest");
 
   eleventyConfig.addFilter("dateFilter", (dateObj) => {
   return new Intl.DateTimeFormat("pl-PL").format(dateObj);

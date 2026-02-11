@@ -1,0 +1,21 @@
+{
+  "name": "Heliocantharus",
+  "short_name": "Helio62",
+  "icons": [
+    {
+      "src": "/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "theme_color": "#19e597",
+  "background_color": "#090817",
+  "display": "standalone"
+}
