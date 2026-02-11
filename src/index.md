@@ -1,25 +1,12 @@
 ---
 layout: base.njk
-title: Strona główna
+title: Heliocantharus
 og_image: "heliocantharus.png"
 ---
-## Welcome to Helio62 Blog
-This content is now automatically wrapped in the base layout.
-
-## Ostatnie wpisy
-
-<ul role="list" class="flow post-list">
-  {%- for post in collections.posts | reverse -%}
-    <li class="post-card">
-      <article>
-        <h2>
-          <a href="{{ post.url }}">{{ post.data.title }}</a>
-        </h2>
-        <time datetime="{{ post.date | dateFilter }}">
-          {{ post.date | dateFilter }}
-        </time>
-        <p>{{ post.data.description }}</p>
-      </article>
-    </li>
-  {%- endfor -%}
-</ul>
+## Czym jest Heliocantharus?
+Blog o sandboksie i grach fabularnych w ogóle.
+>To jest blockquote
+>Kolejna linia
+>cytatu.
+---
+A oto link: [Przejdź dalej](#). Napiszę więcej tekstu, żeby sprawdzić jak radzi sobie link z obniżonym podkreśleniem w przypadku kilku linijek. Ale wygląda to cyba dobrze, choć dla pewności sprawdzę to jeszcze.

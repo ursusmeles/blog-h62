@@ -42,15 +42,6 @@
 /* TOKENS */
 @layer tokens {
   :root {
-    /*  Colors (OKLCH) */
-    --h: 250; /* Primary brand hue */
-    --color-primary: oklch(65% 0.18 var(--h));
-    --color-bg: oklch(98% 0.01 var(--h));
-    --color-text: oklch(20% 0.03 var(--h));
-    
-    /* Sizings */
-    --gutter: clamp(1rem, 5vw, 3rem);
-    --grid-gap: clamp(1.25rem, 5vw, 2.5rem);
     /* Spacing Scale */
     /* @link https://utopia.fyi/space/calculator?c=360,16,1.125,1440,18,1.2,5,1,&s=0.75|0.5|0.25,1.5|2|3|4|6|10,s-4xl&g=s,l,xl,12 */
     --space-3xs: clamp(0.25rem, 0.2292rem + 0.0926vw, 0.3125rem);
@@ -63,6 +54,7 @@
     --space-2xl: clamp(4rem, 3.8333rem + 0.7407vw, 4.5rem);
     --space-3xl: clamp(6rem, 5.75rem + 1.1111vw, 6.75rem);
     --space-4xl: clamp(10rem, 9.5833rem + 1.8519vw, 11.25rem);
+
     /* One-up pairs */
     --space-3xs-2xs: clamp(0.25rem, 0.1458rem + 0.463vw, 0.5625rem);
     --space-2xs-xs: clamp(0.5rem, 0.375rem + 0.5556vw, 0.875rem);
@@ -73,6 +65,7 @@
     --space-xl-2xl: clamp(3rem, 2.5rem + 2.2222vw, 4.5rem);
     --space-2xl-3xl: clamp(4rem, 3.0833rem + 4.0741vw, 6.75rem);
     --space-3xl-4xl: clamp(6rem, 4.25rem + 7.7778vw, 11.25rem);
+
     /* Custom pairs */
     --space-s-4xl: clamp(1rem, -2.4167rem + 15.1852vw, 11.25rem);
     
@@ -84,13 +77,71 @@
     --step-3: clamp(1.4238rem, 1.2504rem + 0.7706vw, 1.944rem);
     --step-4: clamp(1.6018rem, 1.3581rem + 1.083vw, 2.3328rem);
     --step-5: clamp(1.802rem, 1.4696rem + 1.4775vw, 2.7994rem);
+
     /* Typography */
     --font-brand: 'ABC Solar', system-ui, sans-serif;
     --font-base: 'IBM Plex Sans', system-ui, sans-serif;
+
     /* Leading (Line Height) */
     --tight: 1.1;
     --mid: 1.3;
     --loose: 1.6;
+
+    /* Layout */
+    --gutter: var(--space-s-4xl);
+
+    /*  Hues */
+    --hue-primary: 273;
+    --hue-secondary: 162;
+    --hue-offwhite: 273;
+    --hue-offblack: 285;
+
+    /* Primary palette */
+    --primary-lll:  oklch(0.735 0.14 var(--hue-primary));
+    --primary-ll:   oklch(0.62  0.21 var(--hue-primary));
+    --primary-l:    oklch(0.54  0.25 var(--hue-primary));
+    --primary:      oklch(0.44  0.26 var(--hue-primary));
+    --primary-d:    oklch(0.38  0.24 var(--hue-primary));
+    --primary-dd:   oklch(0.315 0.20 var(--hue-primary));
+    --primary-ddd:  oklch(0.185 0.12 var(--hue-primary));
+
+    /* Secondary palette */
+    --secondary-lll:  oklch(0.965 0.05  var(--hue-secondary));
+    --secondary-ll:   oklch(0.93  0.11  var(--hue-secondary));
+    --secondary-l:    oklch(0.865 0.19  var(--hue-secondary));
+    --secondary:      oklch(0.815 0.185 var(--hue-secondary));
+    --secondary-d:    oklch(0.66  0.14  var(--hue-secondary));
+    --secondary-dd:   oklch(0.561 0.12  var(--hue-secondary));
+    --secondary-ddd:  oklch(0.484 0.1   var(--hue-secondary));
+    --secondary-dddd: oklch(0.33  0.07  var(--hue-secondary));
+
+    /* Off colors */
+    --offwhite: oklch(0.84  0.01 var(--hue-offwhite));
+    --offblack: oklch(0.16 0.012 var(--hue-offblack));
+
+    /* Semantic colors */
+    --color-bg: var(--offblack);
+    --color-text: var(--offwhite);
+    --color-surface: var(--secondary-dddd);
+    --color-border: var(--secondary-ddd);
+    --color-selection: var(--secondary);
+    --color-clickable: var(--secondary);
+    --color-hover: var(--secondary-ll);
+    --color-accent: var(--primary);
+    --color-accent-less: var(--primary-dd);
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --color-bg: var(--offwhite);
+      --color-text: var(--offblack);
+      --color-surface: var(--secondary-lll);
+      --color-border: var(--secondary-ll);
+      --color-selection: var(--secondary-dd);
+      --color-clickable: var(--secondary);
+      --color-hover: var(--secondary-dd);
+      --color-accent: var(--primary);
+      --color-accent-less: var(--primary-ll);
+    }
   }
 }
 
@@ -152,6 +203,8 @@ img,
 picture {
   max-width: 100%;
   display: block;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 /* Inherit fonts for inputs and buttons */
@@ -175,13 +228,46 @@ textarea:not([rows]) {
 
 /* BASE (global element styling) */
 @layer base {
+  ::selection {
+    background-color: var(--color-selection);
+    color: var(--color-bg);
+  }
+
   body {
     background-color: var(--color-bg);
     font-family: var(--font-base);
     font-size: var(--step-0);
     line-height: var(--loose);
     color: var(--color-text);
+    display: grid;
+    grid: auto 1fr auto /
+      [full-start] minmax(var(--gutter), 1fr) 
+      [content-start] min(100% - (var(--gutter) * 2), 70rem) 
+      [content-end] minmax(var(--gutter), 1fr) [full-end];
+    min-height: 100vh;
   }
+
+  body > * {
+    grid-column: content;
+  }
+
+  a {
+  color: var(--color-clickable);
+  text-decoration: none;
+  transition: all 0.18s ease-out;
+  &:hover {
+      color: var(--color-hover);
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.3em;}
+  &:active {
+      color: var(--color-selection);
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.3em;
+
+  }
+}
 
   h1, h2, h3, h4 {
     font-family: var(--font-brand);
@@ -199,6 +285,12 @@ textarea:not([rows]) {
     font-size: var(--step-4);
     line-height: var(--tight);
     letter-spacing: -0.015em;
+    &::before{
+      content: "#";
+      display: inline-block;
+      margin-inline-end: 0.25ch;
+      color: var(--color-accent-less);
+    }
   }
 
   h3 {
@@ -225,22 +317,107 @@ textarea:not([rows]) {
     max-width: 70ch;
   }
 
-  a {
-    color: var(--color-primary);
-    text-underline-offset: 0.2ex;
+  blockquote {
+    font-style: italic;
+    border-inline-start: 4px solid var(--color-accent-less);
+    padding-inline-start: var(--space-m);
+    margin-block: var(--space-m);
+    color: color-mix(in oklch, var(--color-text), transparent 20%);
   }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--step--1);
+    font-family: var(--font-base);
+  }
+
+  th {
+    text-align: left;
+    border-bottom: 2px solid var(--color-accent);
+    padding: var(--space-2xs);
+  }
+
+  td {
+    padding: var(--space-2xs);
+    border-bottom: 1px solid color-mix(in oklch, var(--color-text), transparent 90%);
+  }
+
+  article {
+    max-width: 65ch;
+    font-size: var(--step-1);
+    --flow-space: var(--space-m-l);
+    hyphens: auto;
+    hyphenate-limit-chars: 6 3 3;
+    text-wrap: pretty;
+    &:is(ul, ol) {
+      --flow-space: var(--space-xs);
+      padding-inline-start: 1rem;}
+    &:is(h2, h3):not(:first-child) {
+       margin-block-start: var(--space-l-xl);}
+    & a {
+      color: currentColor;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.3em;
+      text-decoration-color: var(--color-accent);
+      &:hover {
+        color: currentColor;
+        text-decoration: underline;
+        text-decoration-color: var(--color-accent-less);
+        transition: text-decoration-color 0.18s ease-out;
+      }
+    }
+}
+
+  hr {
+    overflow: visible;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(
+      to right, 
+      transparent, 
+      var(--color-border), 
+      transparent
+    );
+    margin-block: var(--space-xl);
+    width: 70%;
+    margin-inline: auto;
+    &::after {
+    content: '◈';
+    display: block;
+    text-align: center;
+    color: var(--color-surface);
+    font-size: var(--step-0);
+    transform: translateY(-50%);
+    background: var(--color-bg);
+    width: var(--space-l);
+    margin: 0 auto;
+  }
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-m);
+  justify-content: space-between;
+  align-items: baseline;
+  padding-block: var(--space-m-l);
+  border-bottom: 1px solid var(--color-border);
+  & ul{
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-m);
+  }
+}
+
+
 }
 
 /* 6. COMPOSITION (structural patterns) */
 @layer composition {
-  .wrapper {
-    max-width: 70rem;
-    margin-inline: auto;
-    padding-inline: var(--gutter);
-  }
-
   .flow > * + * {
-    margin-block-start: var(--flow-space, 1.5em);
+    margin-block-start: var(--flow-space, 1em);
   }
 
   .stack {
@@ -256,30 +433,32 @@ textarea:not([rows]) {
 .stack > * + * {
   margin-block-start: var(--stack-space, 1.5rem);
 }
-  
-  .grid {
-    display: grid;
-    gap: var(--grid-gap);
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 1fr));
+
+.full-bleed {
+    grid-column: full;
   }
 }
 
 /* UTILITIES LAYER (single purpose classes)*/
 @layer utilities {
-  .visually-hidden {
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-  }
-  
-  .text-primary { color: var(--color-primary); }
+  /* TBD */
 }
 
 /* BLOCKS LAYER (specific components) */
 @layer blocks {
-  /* TBD */
+  .skip-link {
+  position: absolute;
+  left: -9999px;
+  z-index: 999;
+  padding: 1em;
+  background-color: black;
+  color: white;
+  opacity: 0;
+}
+
+.skip-link:focus {
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 1;
+}
 }

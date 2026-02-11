@@ -24,44 +24,60 @@
 </head>
 <body>
   <a href="#main-content" class="skip-link">Przejdź do treści</a>
+  <header>
+    <a href="/" aria-label="Heliocantharus">
+      <strong>Heliocantharus</strong>
+    </a>
 
-  <header class="site-header wrapper">
-    <div class="site-header__inner">
-      <a href="/" class="logo" aria-label="Heliocantharus">
-        <strong>Heliocantharus</strong>
-      </a>
-
-      <nav aria-label="Główna nawigacja">
-        <ul role="list" class="nav-list">
-          <li><a href="/" {{ 'aria-current=page' if page.url == '/' }}>Start</a></li>
-          <li><a href="/blog/" {{ 'aria-current=page' if page.url == '/blog/' }}>Blog</a></li>
-        </ul>
-      </nav>
-    </div>
+    <nav aria-label="Główna nawigacja">
+      <ul role="list">
+        <li><a href="/" {{ 'aria-current=page' if page.url == '/' }}>Start</a></li>
+        <li><a href="/blog/" {{ 'aria-current=page' if page.url == '/blog/' }}>Blog</a></li>
+        <li><a href="/materialy/" {{ 'aria-current=page' if page.url == '/materialy/' }}>Materiały</a></li>
+        <li><a href="/info/" {{ 'aria-current=page' if page.url == '/info/' }}>Info</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main id="main-content" tabindex="-1">
-    <article class="wrapper flow">
-      {% if title %}
-        <h1>{{ title }}</h1>
-      {% endif %}
-       {% if description %}
-      <span>{{ description }}</span>
-      {% endif %}
-      {{ content | safe }}
+  <main id="main-content" tabindex="-1" class="flow">
+    {% if title %}
+      <h1>{{ title }}</h1>
+    {% endif %}
+    
+    {% if description %}
+      <p class="description">{{ description }}</p>
+    {% endif %}
+    <article>
+    {{ content | safe }}
     </article>
+    <section>
+    <h2>Ostatnie wpisy</h2>
+<ul role="list" class="flow post-list">
+  {%- for post in collections.posts | reverse -%}
+    <li class="post-card">
+      <article>
+        <h3>
+          <a href="{{ post.url }}">{{ post.data.title }}</a>
+        </h3>
+        <time datetime="{{ post.date | dateFilter }}">
+          {{ post.date | dateFilter }}
+        </time>
+        <p>{{ post.data.description }}</p>
+      </article>
+    </li>
+  {%- endfor -%}
+</ul>
+    </section>
   </main>
 
-  <footer class="site-footer wrapper">
-    <div class="site-footer__inner">
-      <p>&copy; Mateusz Nowak | <a href="https://h62.pl">Helio62</a></p>
-      
-      <nav aria-label="Stopka">
-        <ul role="list" class="nav-list nav-list--footer">
-          <li><a href="/privacy/">Polityka prywatności</a></li>
-        </ul>
-      </nav>
-    </div>
+  <footer>
+    <p>Mateusz Nowak | <a href="https://h62.pl">Helio62</a></p>
+    
+    <nav aria-label="Stopka">
+      <ul role="list">
+        <li><a href="/privacy/">Polityka prywatności</a></li>
+      </ul>
+    </nav>
   </footer>
 </body>
 </html>
