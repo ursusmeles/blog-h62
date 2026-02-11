@@ -397,18 +397,17 @@ textarea:not([rows]) {
 }
 
 header {
-  display: flex;
-  flex-direction: row;
-  gap: var(--space-m);
-  justify-content: space-between;
-  align-items: baseline;
   padding-block: var(--space-m-l);
-  border-bottom: 1px solid var(--color-border);
+  --stack-space: var(--space-xs);
   & ul{
     display: flex;
     flex-direction: row;
     gap: var(--space-m);
   }
+}
+
+header div,h1 {
+    border-bottom: 1px solid var(--color-border);
 }
 
 
@@ -441,7 +440,18 @@ header {
 
 /* UTILITIES LAYER (single purpose classes)*/
 @layer utilities {
-  /* TBD */
+.visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
+  }
 }
 
 /* BLOCKS LAYER (specific components) */
@@ -460,5 +470,61 @@ header {
   left: 50%;
   transform: translateX(-50%);
   opacity: 1;
+}
+
+.header__top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.header__brand{
+    margin: 0;
+    padding-inline: 0;
+    padding-block: var(--space-xs);
+    font-size: inherit;
+    line-height: 0;
+    width: 100%;
+}
+
+.logo-mask {
+  display: block;
+  aspect-ratio: 9 / 1;
+  position: relative;
+  
+  /* Mask */
+  -webkit-mask-image: url('/img/heliocantharus-logo.svg');
+  mask-image: url('/img/heliocantharus-logo.svg');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+
+  /* Base gradient */
+  background: linear-gradient(
+    to bottom, 
+    var(--secondary-d) 30%, 
+    var(--secondary) 100%
+  );
+
+  /* Transition */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+    to bottom, 
+    var(--secondary) 30%, 
+    var(--secondary) 100%
+  );
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease-in-out;
+  }
+  &:hover::after {
+    opacity: 1;
+  }
 }
 }

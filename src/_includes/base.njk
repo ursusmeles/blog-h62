@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="canonical" href="https://blog.h62.pl{{ page.url }}">
-  <title>{{ title }} | Heliocantharus RPG</title>
+  <title>{{ title or 'Blog o RPG'}} | Heliocantharus RPG</title>
 
   <meta name="description" content="{{ description or 'Materiały RPG, tabele i poradniki do stylu gry typu sandbox' }}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://blog.h62.pl{{ page.url }}">
-  <meta property="og:title" content="{{ title }} | Heliocantharus RPG">
+  <meta property="og:title" content="{{ title or 'Blog o RPG'}} | Heliocantharus RPG">
   <meta property="og:description" content="{{ description or 'Materiały RPG, tabele i poradniki do stylu gry typu sandbox' }}">
   <meta property="og:image" content="https://blog.h62.pl/images/{{ og_image or 'heliocantharus.png' }}">
   <meta name="twitter:card" content="summary_large_image">
@@ -27,9 +27,10 @@
 </head>
 <body>
   <a href="#main-content" class="skip-link">Przejdź do treści</a>
-  <header>
-    <a href="/" aria-label="Heliocantharus">
-      <strong>Heliocantharus</strong>
+  <header class="stack">
+  <div class="header__top">
+    <a href="/" aria-label="Blog o RPG">
+      <strong>Blog o RPG</strong>
     </a>
 
     <nav aria-label="Główna nawigacja">
@@ -39,7 +40,20 @@
         <li><a href="/materialy/" {{ 'aria-current=page' if page.url == '/materialy/' }}>Materiały</a></li>
         <li><a href="/info/" {{ 'aria-current=page' if page.url == '/info/' }}>Info</a></li>
       </ul>
-    </nav>
+    </nav></div>
+    {% if page.url == '/' %}
+      <h1 class="header__brand">
+        <a href="/" rel="home" class="logo-mask">
+          <span class="visually-hidden">Heliocantharus</span>
+        </a>
+      </h1>
+    {% else %}
+      <div class="header__brand">
+        <a href="/" rel="home" class="logo-mask">
+          <span class="visually-hidden">Heliocantharus</span>
+        </a>
+      </div>
+    {% endif %}
   </header>
 
   <main id="main-content" tabindex="-1" class="flow">

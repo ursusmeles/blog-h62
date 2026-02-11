@@ -1,7 +1,5 @@
 ---
 layout: base.njk
-title: Heliocantharus
-og_image: "heliocantharus.png"
 ---
 ## Czym jest Heliocantharus?
 Blog o sandboksie i grach fabularnych w ogóle.
