@@ -24,14 +24,21 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="Helio62" />
   <link rel="manifest" href="/site.webmanifest" />
+  <script>
+  const storageKey = 'helio-theme-pref';
+  const getColorPreference = () => {
+    if (localStorage.getItem(storageKey)) return localStorage.getItem(storageKey);
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  };
+
+  document.documentElement.setAttribute('data-theme', getColorPreference());
+</script>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Przejdź do treści</a>
   <header class="stack">
   <div class="header__top">
-    <a href="/" aria-label="Blog o RPG">
-      <strong>Blog o RPG</strong>
-    </a>
+      <span>RPG · sandbox · game design</span>
 
     <nav aria-label="Główna nawigacja">
       <ul role="list">
@@ -54,9 +61,20 @@
         </a>
       </div>
     {% endif %}
+<button id="theme-toggle" class="theme-switch" aria-label="Przełącz motyw">
+  <span class="theme-switch__thumb"></span>
+  
+    <span class="theme-switch__icon moon" aria-hidden="true">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </span>
+  <span class="theme-switch__icon sun" aria-hidden="true">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+  </span>
+
+</button>
   </header>
 
-  <main id="main-content" tabindex="-1" class="flow">
+  <main id="main-content" tabindex="-1">
     {% if title %}
       <h1>{{ title }}</h1>
     {% endif %}
@@ -64,7 +82,7 @@
     {% if description %}
       <p class="description">{{ description }}</p>
     {% endif %}
-    <article>
+    <article class="flow">
     {{ content | safe }}
     </article>
     <section>
@@ -96,5 +114,19 @@
       </ul>
     </nav>
   </footer>
+<script>
+  const toggle = document.querySelector('#theme-toggle');
+  const root = document.documentElement;
+
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      const currentTheme = root.getAttribute('data-theme');
+      const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
+      
+      root.setAttribute('data-theme', nextTheme);
+      localStorage.setItem('helio-theme-pref', nextTheme);
+    });
+  }
+</script>
 </body>
 </html>
