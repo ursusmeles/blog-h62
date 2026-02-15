@@ -105,15 +105,38 @@
     </section>
   </main>
 
-  <footer>
-    <p>Mateusz Nowak | <a href="https://h62.pl">Helio62</a></p>
-    
-    <nav aria-label="Stopka">
-      <ul role="list">
-        <li><a href="/privacy/">Polityka prywatności</a></li>
+<footer>
+ <div class="footer__meta">
+      <h2>Heliocantharus</h2>
+      <p>&copy; 2026 Mateusz Nowak · Heliocantharus. Licencja: CC BY-NC-SA 4.0.</p>
+      <p class="footer__status">Heliocantharus RPG nie używa ciasteczek i nie śledzi Cię w żaden sposób. Więcej informacji: <a href="/polityka-prywatnosci/">Polityka&nbsp;prywatności</a>.</p>
+    </div>
+<nav class="footer__nav" aria-label="Stopka">
+      <ul role="list" class="footer__list">
+        <li>
+          <a href="/rss.xml" aria-label="RSS Feed">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
+            <span class="icon-label">RSS</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/ursusmeles/blog-h62/" aria-label="GitHub" target="_blank">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            <span class="icon-label">GitHub</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://youtube.com" aria-label="YouTube" target="_blank">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.11 1 12 1 12s0 3.89.46 5.58a2.78 2.78 0 0 0 1.94 2c1.72.42 8.6.42 8.6.42s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.89 23 12 23 12s0-3.89-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
+            <span class="icon-label">YouTube</span>
+          </a>
+        </li>
       </ul>
     </nav>
-  </footer>
+    <div class="site-seal">
+  <img src="/img/heliocantharus.svg" alt="" aria-hidden="true" width="64" height="64"/>
+</div>
+</footer>
 <script>
   const toggle = document.querySelector('#theme-toggle');
   const root = document.documentElement;
