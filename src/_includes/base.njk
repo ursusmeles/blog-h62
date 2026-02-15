@@ -38,8 +38,7 @@
   <a href="#main-content" class="skip-link">Przejdź do treści</a>
   <header class="stack">
   <div class="header__top">
-      <span>RPG · sandbox · game design</span>
-
+  <span>RPG · sandbox · game design</span>
     <nav aria-label="Główna nawigacja">
       <ul role="list">
         <li><a href="/" {{ 'aria-current=page' if page.url == '/' }}>Start</a></li>
@@ -47,7 +46,8 @@
         <li><a href="/materialy/" {{ 'aria-current=page' if page.url == '/materialy/' }}>Materiały</a></li>
         <li><a href="/info/" {{ 'aria-current=page' if page.url == '/info/' }}>Info</a></li>
       </ul>
-    </nav></div>
+    </nav>
+    </div>
     {% if page.url == '/' %}
       <h1 class="header__brand">
         <a href="/" rel="home" class="logo-mask">
@@ -61,7 +61,7 @@
         </a>
       </div>
     {% endif %}
-<button id="theme-toggle" class="theme-switch" aria-label="Przełącz motyw">
+        <button id="theme-toggle" class="theme-switch" aria-label="Przełącz motyw">
   <span class="theme-switch__thumb"></span>
   
     <span class="theme-switch__icon moon" aria-hidden="true">

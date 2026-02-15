@@ -693,8 +693,8 @@ nav {
         font-size: var(--step--1);
         color: var(--color-text-secondary);
         background-color: var(--color-clickable-less);
-        padding-inline: var(--space-xs);
-        padding-block: 0.125em;
+        padding-inline: var(--space-s);
+        padding-block: 0.25em;
         border-radius: var(--radius-s);
         transition: var(--transition-default);
         &:hover {
@@ -782,6 +782,11 @@ summary {
 details[open] summary {
   margin-block-end: var(--space-s);
 }
+
+abbr {
+  text-decoration: none;
+  border-bottom: var(--stroke-dashed) var(--color-text-secondary);
+}
 }
 
 /* 6. COMPOSITION (structural patterns) */
@@ -847,17 +852,22 @@ details[open] summary {
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
-  gap: 0 var(--space-xs);
-  &:first-child {
-    white-space: nowrap;
-    flex-shrink: 0;
+  gap: 0;
+  & > span:first-child {
+    font-size: var(--step--1);
   }
   & nav {
     margin-inline-start: auto;
-    flex-basis: auto;
+    min-width: fit-content;
     display: flex;
-    justify-content: flex-start;
 }
+& ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs) var(--space-s-m);
+    list-style: none;
+    justify-content: flex-end;
+  }
 }
 
 .header__brand{
@@ -915,6 +925,7 @@ details[open] summary {
   --thumb-size: calc(var(--switch-height) - (var(--padding) * 2) - 2px); /* -2px accounts for the 1px borders */
   --switch-width: calc((var(--thumb-size) * 2) + (var(--padding) * 4) + 2px); /* width of two thumbs + padding on both sides + 2px for borders */
 
+  margin-inline-start: auto;
   position: relative;
   display: flex;
   align-items: center;
@@ -924,8 +935,8 @@ details[open] summary {
   height: var(--switch-height);
   padding: var(--padding);
   
-  background: var(--color-surface-level-1);
-  border: 1px solid var(--color-border-level-1);
+  background: var(--color-bg);
+  border: var(--stroke-thin) var(--color-border-level-1);
   border-radius: var(--radius-m);
   cursor: pointer;
   transition: var(--transition-fade);
@@ -941,7 +952,7 @@ details[open] summary {
   
   width: calc(var(--thumb-size) + (var(--padding)));
   height: var(--thumb-size);
-  background: var(--color-surface-level-2);
+  background: var(--color-surface-level-1);
   border-radius: calc(var(--radius-m) * 0.8); /* smaller radius for nested look */
   
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
@@ -984,6 +995,6 @@ details[open] summary {
 [data-theme="dark"] .sun,
 [data-theme="light"] .moon {
   color: var(--color-clickable-less);
-  opacity: 0.9;
+  opacity: 1;
 }
 }
