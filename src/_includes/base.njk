@@ -14,7 +14,7 @@
   <meta property="og:description" content="{{ description or 'Materiały RPG, tabele i poradniki do stylu gry typu sandbox' }}">
   <meta property="og:image" content="https://blog.h62.pl/images/{{ og_image or 'heliocantharus.png' }}">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ title }} | Heliocantharus RPG">
+  <meta name="twitter:title" content="{{ title or 'Blog o RPG'}} | Heliocantharus RPG">
   <meta name="twitter:description" content="{{ description or 'Materiały RPG, tabele i poradniki do stylu gry typu sandbox' }}">
   <meta name="twitter:image" content="https://blog.h62.pl/images/{{ og_image or 'heliocantharus.png' }}">
   <link rel="stylesheet" href="/css/main.css">
@@ -85,6 +85,37 @@
     <article class="flow">
     {{ content | safe }}
     </article>
+    <div class="color-tester wrapper">
+  <h2>Primary Palette</h2>
+  <div class="color-grid">
+    <div class="swatch" style="background: var(--primary-lll)"><span>lll</span></div>
+    <div class="swatch" style="background: var(--primary-ll)"><span>ll</span></div>
+    <div class="swatch" style="background: var(--primary-l)"><span>l</span></div>
+    <div class="swatch" style="background: var(--primary)"><span>base</span></div>
+    <div class="swatch" style="background: var(--primary-d)"><span>d</span></div>
+    <div class="swatch" style="background: var(--primary-dd)"><span>dd</span></div>
+    <div class="swatch" style="background: var(--primary-ddd)"><span>ddd</span></div>
+  </div>
+
+  <h2>Secondary Palette</h2>
+  <div class="color-grid">
+    <div class="swatch" style="background: var(--secondary-lll)"><span>lll</span></div>
+    <div class="swatch" style="background: var(--secondary-ll)"><span>ll</span></div>
+    <div class="swatch" style="background: var(--secondary-l)"><span>l</span></div>
+    <div class="swatch" style="background: var(--secondary)"><span>base</span></div>
+    <div class="swatch" style="background: var(--secondary-d)"><span>d</span></div>
+    <div class="swatch" style="background: var(--secondary-dd)"><span>dd</span></div>
+    <div class="swatch" style="background: var(--secondary-ddd)"><span>ddd</span></div>
+    <div class="swatch" style="background: var(--secondary-dddd)"><span>dddd</span></div>
+  </div>
+
+  <h2>Off Colors</h2>
+  <div class="color-grid">
+    <div class="swatch" style="background: var(--offwhite)"><span>white</span></div>
+    <div class="swatch" style="background: var(--offblack)"><span>black</span></div>
+    <div class="swatch" style="background: var(--offblack-purple)"><span>purple-black</span></div>
+  </div>
+</div>
     <section>
     <h2>Ostatnie wpisy</h2>
 <ul role="list" class="flow post-list">
@@ -105,13 +136,13 @@
     </section>
   </main>
 
-<footer>
+<footer class="glow">
  <div class="footer__meta">
       <h2>Heliocantharus</h2>
       <p>&copy; 2026 Mateusz Nowak · Heliocantharus. Licencja: CC BY-NC-SA 4.0.</p>
       <p class="footer__status">Heliocantharus RPG nie używa ciasteczek i nie śledzi Cię w żaden sposób. Więcej informacji: <a href="/polityka-prywatnosci/">Polityka&nbsp;prywatności</a>.</p>
     </div>
-<nav class="footer__nav" aria-label="Stopka">
+<nav aria-label="Stopka">
       <ul role="list" class="footer__list">
         <li>
           <a href="/rss.xml" aria-label="RSS Feed">
