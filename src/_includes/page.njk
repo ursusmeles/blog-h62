@@ -1,0 +1,12 @@
+---
+layout: base.njk
+---
+  {% if title %}
+  <h1>{{ title }}</h1>
+  {% endif %}
+  {% if description %}
+  <p class="description">{{ description }}</p>
+  {% endif %}
+    <article class="prose flow">
+  {{ content | safe }}
+    </article>

@@ -1,0 +1,36 @@
+<header class="stack full-bleed">
+  <div class="header__top">
+  <span>RPG · sandbox · game design</span>
+    <nav aria-label="Główna nawigacja">
+      <ul role="list">
+        <li><a href="/" {{ 'aria-current=page' if page.url == '/' }}>Start</a></li>
+        <li><a href="/blog/" {{ 'aria-current=page' if page.url == '/blog/' }}>Blog</a></li>
+        <li><a href="/materialy/" {{ 'aria-current=page' if page.url == '/materialy/' }}>Materiały</a></li>
+        <li><a href="/info/" {{ 'aria-current=page' if page.url == '/info/' }}>Info</a></li>
+      </ul>
+    </nav>
+    </div>
+    {% if page.url == '/' %}
+      <h1 class="header__brand">
+        <a href="/" rel="home" class="logo-mask">
+          <span class="visually-hidden">Heliocantharus</span>
+        </a>
+      </h1>
+    {% else %}
+      <div class="header__brand">
+        <a href="/" rel="home" class="logo-mask">
+          <span class="visually-hidden">Heliocantharus</span>
+        </a>
+      </div>
+    {% endif %}
+        <button id="theme-toggle" class="theme-switch" aria-label="Przełącz motyw">
+  <span class="theme-switch__thumb"></span>
+  
+    <span class="theme-switch__icon moon" aria-hidden="true">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  </span>
+  <span class="theme-switch__icon sun" aria-hidden="true">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+  </span>
+  </button>
+</header>
