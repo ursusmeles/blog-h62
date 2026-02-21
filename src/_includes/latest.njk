@@ -1,0 +1,37 @@
+<section class="post-grid">
+    <div>
+        <h2>Czytaj teksty</h2>
+        <ul role="list" class="cluster" style="--cluster-gap: var(--space-s);">
+        {% for category in collections.categoryList %}
+        <li><a href="/categories/{{ category | slugify }}/" class="pill">{{ category }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+
+{% set postslist = collections.posts | reverse %}
+{% for post in postslist.slice(0, 7) %}
+
+<article class="post-card stack elevated">
+    {% if post.data.image %}
+    <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy">
+    {% else %}
+    <div class="post-card__image-placeholder"></div>
+    {% endif %}
+    
+    <div class="stack post-card__content">
+      <div class="post-card__meta">
+        <time datetime="{{ post.date | dateFilter }}">
+      {{ post.date | dateFilter }}
+      </time>
+        <span class="pill">{{ post.data.category }}</span>
+      </div>
+      <h3 class="post-card__title">{{ post.data.title }}</h3>
+      <p>{{ post.data.description }}</p>
+      <a href="{{ post.url }}" class="button">Czytaj więcej</a>
+    </div>
+  </article>
+  {% endfor %}
+      <div>
+        <h2>Zobacz wszystkie teksty</h2>
+    </div>
+</section>

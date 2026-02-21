@@ -399,12 +399,6 @@ textarea:not([rows]) {
     line-height: var(--tight);
     letter-spacing: normal;
     max-width: 35ch;
-    &::before{
-      content: "✦";
-      display: inline-block;
-      margin-inline-end: 0.25ch;
-      color: var(--color-accent-less);
-    }
   }
 
   h3 {
@@ -539,12 +533,15 @@ hr {
   
   background-image: linear-gradient(
     to right,
-    var(--primary) 30%,
-    var(--secondary) 60%,
+    transparent,
+    var(--primary) 10%,
+    var(--secondary) 50%,
+    var(--primary) 90%,
     transparent
   );
 
-  margin-block: var(--space-2xl);
+  margin-block-end: var(--space-m-l);
+  --flow-space: var(--space-l-xl);
   width: 100%;
   position: relative;
   transition: var(--transition-fade);
@@ -555,11 +552,11 @@ hr {
     text-align: center; 
     position: absolute;
     top: 50%;
-    left: 0;
-    transform: translate(0%, -55%);
+    left: 50%;
+    transform: translate(-50%, -50%);
     background: var(--color-bg);
     color: var(--color-clickable);
-    padding-inline-end: var(--space-s);
+    padding-inline: var(--space-s);
     font-size: var(--step-0);
     line-height: 1;
   }
@@ -635,11 +632,11 @@ nav {
             transform: scale(1.05);
         }
         &:active {
-            background-color: var(--color-surface-level-2);
+            background-color: var(--color-surface-level-1);
             border-bottom: var(--stroke-thin) var(--color-clickable);
             color: var(--color-text);
             text-decoration: none;
-            transform: scale(0.95);
+            transform: scale(0.98);
          }
     }
 }
@@ -670,9 +667,6 @@ footer {
     margin: 0;
     margin-block-start: var(--space-s);
     padding: 0;
-  }
-  & h2::before {
-    display: none;
   }
 }
 
@@ -781,6 +775,14 @@ abbr {
   margin-block-start: var(--stack-space, 1.5rem);
 }
 
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--cluster-gap, 1rem);
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .full-bleed {
     grid-column: full;
     width: 100%;
@@ -815,8 +817,14 @@ abbr {
 }
 
 .prose {
-  /* --- Core Typography & Layout --- */
-  max-width: 65ch;
+  /* --- Layout --- */
+  display: grid;
+  grid-template-columns: 
+    [article-start] minmax(0, 1fr) 
+    [prose-start] min(70ch, 100%) [prose-end] 
+    minmax(0, 1fr) [article-end];
+
+  /* --- Core Typography --- */
   font-size: var(--step-1);
   --flow-space: var(--space-s-m);
   hyphens: auto;
@@ -839,6 +847,13 @@ abbr {
   --flow-space: var(--space-xl);
     margin-block-start: var(--flow-space);
   }
+
+      & h2::before{
+      content: "✦";
+      display: inline-block;
+      margin-inline-end: 0.25ch;
+      color: var(--color-accent-less);
+    }
 
   /* --- General List Logic --- */
   & :is(ul, ol) {
@@ -895,6 +910,15 @@ abbr {
     color: var(--color-clickable);
     margin-inline-start: 0.5ch;
   }
+}
+
+.prose > * {
+  grid-column: prose;
+}
+
+.prose > hr {
+grid-column: article;
+  width: 100%;
 }
 }
 
@@ -1122,11 +1146,17 @@ abbr {
 
 .post-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
   border-collapse: collapse;
   gap: 0;
   align-items: stretch;
   grid-auto-rows: 1fr;
+  & h2 {
+    color: var(--color-clickable-muted);
+  }
+  & ul {
+    margin-block: var(--space-s-m);
+  }
 }
 
 .post-card {
@@ -1195,23 +1225,20 @@ abbr {
 .post-card p {
   font-size: var(--step--1);
   margin-block-end: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .post-card:hover {
- /* --bg-hover-solid: color-mix(in oklch, var(--color-text) 3%, var(--color-bg));
-  background: 
-    linear-gradient(var(--bg-hover-solid), var(--bg-hover-solid)) padding-box,
-    var(--gradient-brand) border-box;
-  border-color: transparent;
-  z-index: 10; */
   background-color: color-mix(in oklch, var(--color-text) 3%, var(--color-bg));
-  transform: scale(1.02);
+  transform: scale(0.99);
   z-index: 10;
 }
 
 .post-card:hover::before {
-  /* Entirely new selector */
-  opacity: 0.3;
+  opacity: 0.5;
 }
 
 }

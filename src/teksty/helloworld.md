@@ -2,8 +2,11 @@
 title: "Paleta kolorów"
 description: "Pierwszy tekst na blogu. Paleta kolorów jako referencja."
 og_image: "helloworld.png"
-layout: single.njk
+image: "/img/post-alchemy.jpg"
+category: "Alchemia"
+date: 2026-02-20
 ---
+
 ## To jest mój pierwszy post.
 Lorem ipsum dolor sit amet.
 

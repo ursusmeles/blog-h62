@@ -13,6 +13,20 @@ module.exports = function(eleventyConfig) {
   return new Intl.DateTimeFormat("pl-PL").format(dateObj);
 });
 
+// Category list collection
+eleventyConfig.addCollection("categoryList", function(collectionApi) {
+    const posts = collectionApi.getFilteredByTag("posts");
+    let categorySet = new Set();
+    
+    posts.forEach(post => {
+      if (post.data.category) {
+        categorySet.add(post.data.category);
+      }
+    });
+    
+    return Array.from(categorySet).sort();
+  });
+
 return {
   dir: {
     input: "src",
