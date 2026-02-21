@@ -4,7 +4,7 @@
  */
 
 /* LAYER MANIFEST */
-@layer reset, tokens, base, composition, utilities, blocks;
+@layer reset, tokens, base, composition, utilities, blocks, exceptions;
 
 /* FONTS DEFINITION */
 @font-face {
@@ -68,6 +68,7 @@
 
     /* Custom pairs */
     --space-s-4xl: clamp(1rem, -2.4167rem + 15.1852vw, 11.25rem);
+    --space-xs-l: clamp(0.75rem, 0.25rem + 2.2222vw, 2.25rem);
     
     /* Type scale */
     --step--1: clamp(0.8889rem, 0.8727rem + 0.072vw, 0.9375rem);
@@ -119,6 +120,7 @@
 
     /* Gradients */
     --gradient-brand: linear-gradient(to right, var(--primary), var(--secondary));
+    --gradient-muted: linear-gradient(to right, var(--primary-d), var(--secondary-d));
 
     /* Shadows */
     --shadow-primary: oklch(from var(--primary) l c h / 0.15);
@@ -602,7 +604,7 @@ svg[role='img'][width][height] {
 
 header {
   margin-block: var(--space-s-m);
-  padding-inline: var(--space-s);
+  padding-inline: var(--space-xs-l);
   --stack-space: var(--space-3xs);
   & ul{
     display: flex;
@@ -646,7 +648,7 @@ footer {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: var(--space-s-m);
+  gap: var(--space-2xl);
   margin-block: var(--space-3xl-4xl) var(--space-l-xl);
   padding-inline: var(--space-l-xl);
   padding-block: var(--space-xl-2xl);
@@ -830,7 +832,7 @@ abbr {
   hyphens: auto;
   hyphenate-limit-chars: 6 3 3;
   text-wrap: pretty;
-  margin-block-end: var(--space-3xl);
+  margin-block-end: var(--space-s-4xl);
 
   /* --- Headings --- */
   & :is(h1, h2, h3, h4, h5) {
@@ -891,7 +893,7 @@ abbr {
     border-radius: var(--radius-s);
   }
 
-  & a{
+  & a:not([class]) {
     background-image: var(--gradient-brand);
     background-repeat: no-repeat;
     background-size: 100% 0.15ex;
@@ -924,6 +926,43 @@ grid-column: article;
 
 /* BLOCKS LAYER (specific components) */
 @layer blocks {
+  .button {
+  --button-bg: var(--color-clickable);
+  --button-hover: var(--color-hover);
+  --button-text: var(--color-bg);
+  --button-x-padding: 1.2em;
+  --button-y-padding: 0.8em;
+
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  padding: var(--button-y-padding) var(--button-x-padding);
+  margin-inline-end: var(--space-2xs-xs);
+
+  border: none;
+  border-radius: var(--radius-s);
+
+  background: var(--button-bg);
+  color: var(--button-text);
+
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1%;
+  line-height: 1;
+  font-size: var(--step-0);
+  font-weight: var(--font-bold);
+
+  transition: var(--transition-default);
+
+  &:active {
+    transform: scale(0.94)
+  }
+  &:hover {
+  background: var(--button-hover);
+  }
+  }
+
   .skip-link {
   position: absolute;
   left: -9999px;
@@ -1028,11 +1067,11 @@ grid-column: article;
   width: var(--switch-width);
   height: var(--switch-height);
   padding: var(--padding);
-  
+
   background: var(--color-bg);
   border: var(--stroke-thin) var(--color-surface-level-1);
   border-radius: var(--radius-m);
-  box-shadow: var(--shadow-glow-small);
+  
   cursor: pointer;
   transition: var(--transition-fade);
   
@@ -1093,6 +1132,16 @@ grid-column: article;
   opacity: 1;
 }
 
+.footer__meta {
+  flex: 1 1 35ch;
+  max-width: 70ch;
+}
+
+.footer__list {
+  flex-grow: 0 1 auto;
+  min-width: fit-content;
+}
+
 .footer__meta a{
     background-image: var(--gradient-brand);
     background-repeat: no-repeat;
@@ -1151,10 +1200,19 @@ grid-column: article;
   gap: 0;
   align-items: stretch;
   grid-auto-rows: 1fr;
-  & h2 {
+}
+
+.post-grid__header {
+  padding: var(--space-2xs) var(--space-m);
+  border: var(--stroke-thin);
+  border-color: color-mix(in oklch, var(--color-text), transparent 97%);
+    & h2 {
     color: var(--color-clickable-muted);
   }
-  & ul {
+    & p {
+    font-size: var(--step--1);
+    }
+    & ul {
     margin-block: var(--space-s-m);
   }
 }
@@ -1231,6 +1289,13 @@ grid-column: article;
   overflow: hidden;
 }
 
+.post-card a {
+  width: fit-content;
+  margin-inline-start: auto;
+  margin-inline-end: 0;
+  font-size: var(--step--1);
+}
+
 .post-card:hover {
   background-color: color-mix(in oklch, var(--color-text) 3%, var(--color-bg));
   transform: scale(0.99);
@@ -1239,6 +1304,44 @@ grid-column: article;
 
 .post-card:hover::before {
   opacity: 0.5;
+}
+
+}
+
+/* ECXEPTIONS */
+@layer exceptions {
+
+.button[button-variant='secondary'] {
+  --button-bg: var(--color-surface-level-3);
+  --button-hover: var(--color-accent);
+  --button-text: var(--color-text);
+}
+
+.button[button-variant='fancy'] {
+  --button-bg: var(--gradient-brand);
+  --button-hover: var(--gradient-brand);
+  --button-text: var(--color-bg);
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.button[button-variant='typographic'] {
+  --button-bg: transparent;
+  --button-hover: transparent;
+  --button-text: var(--color-text);
+  --button-x-padding: 0.2em;
+  opacity: 0.6;
+  font-weight: normal;
+  &:hover{
+    opacity: 1;
+  }
+  &::after {
+display: inline-block;
+content: '🡪';
+margin-inline-start: 0.7ch;
+  }
 }
 
 }

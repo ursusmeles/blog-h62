@@ -42,7 +42,7 @@
 <main id="main-content" tabindex="-1">
   {{ content | safe }}
 </main>
-
+{% include "latest.njk" %}
 {% include "footer.njk" %}
 <script>
   const toggle = document.querySelector('#theme-toggle');

@@ -1,6 +1,8 @@
 <section class="post-grid">
-    <div>
-        <h2>Czytaj teksty</h2>
+    <div class="post-grid__header">
+        <h2>Najnowsze treści</h2>
+        <p>Czytaj ostatnie artykuły.</p>
+        <h3>Kategorie</h3>
         <ul role="list" class="cluster" style="--cluster-gap: var(--space-s);">
         {% for category in collections.categoryList %}
         <li><a href="/categories/{{ category | slugify }}/" class="pill">{{ category }}</a></li>
@@ -27,11 +29,9 @@
       </div>
       <h3 class="post-card__title">{{ post.data.title }}</h3>
       <p>{{ post.data.description }}</p>
-      <a href="{{ post.url }}" class="button">Czytaj więcej</a>
+      <a href="{{ post.url }}" class="button" button-variant="typographic">Czytaj</a>
     </div>
   </article>
   {% endfor %}
-      <div>
-        <h2>Zobacz wszystkie teksty</h2>
-    </div>
+
 </section>
