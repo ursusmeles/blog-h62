@@ -1,6 +1,7 @@
 ---
 title: "Paleta kolorów"
 description: "Pierwszy tekst na blogu. Paleta kolorów jako referencja."
+lead: "Pierwszy tekst na blogu. Paleta kolorów jako referencja."
 og_image: "helloworld.png"
 image: "/img/post-alchemy.jpg"
 category: "Alchemia"

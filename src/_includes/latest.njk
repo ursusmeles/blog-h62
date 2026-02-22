@@ -3,8 +3,8 @@
 <section class="container">
 <div class="post-grid">
     <div class="post-grid__header">
-        <h2>Najnowsze teksty</h2>
-        <p>Ostatnie artykuły na blogu. Zobacz też wszystkie kategorie:</p>
+        <h2>Najnowsze na blogu</h2>
+        <p class="text-aside">Ostatnie artykuły na blogu. Zobacz też wszystkie kategorie:</p>
         <ul role="list" class="cluster">
         {% for category in collections.categoryList %}
         <li><a href="/temat/{{ category | slugify }}/" class="category-tag">{{ category }}</a></li>

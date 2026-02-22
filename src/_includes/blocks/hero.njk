@@ -1,0 +1,24 @@
+{% set headingTag = "h2" if is_home else "h1" %}
+
+<section class="hero glow {% if image %}has-image{% endif %}">
+    {% if image %}
+    <div class="hero__image">
+      <img src="{{ image }}" alt="" role="presentation">
+    </div>
+     {% endif %}
+    <{{ headingTag }} class="hero__title">{{ title }}</{{ headingTag }}>
+    <div class="hero__lead stack">
+    {% if date or category %}
+        <div class="cluster">
+        {% if category %}<span class="category-tag">{{ category }}</span>{% endif %}
+          {% if date %}<time datetime="{{ date | dateFilter }}" class="text-aside">{{ date | dateFilter }}</time>{% endif %}
+        </div>
+      {% endif %}
+    <p>
+    {{ lead }}
+    </p>
+    </div>
+    {% if buttonText %}
+    <a href="{{ buttonUrl }}" class="button" button-variant="">{{ buttonText }}</a>
+    {% endif %}
+</section>

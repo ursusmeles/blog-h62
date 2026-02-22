@@ -1,0 +1,18 @@
+<div class="container">
+<nav class="repel post-nav" aria-label="Poprzedni i następny wpis">
+  {# Previous Post: Older than current #}
+  {% if previousPost %}
+    <div>
+      <span class="text-aside uppercase">Poprzedni tekst</span>
+      {{ card(previousPost) }}
+    </div>
+  {% endif %}
+
+  {# Next Post: Newer than current #}
+  {% if nextPost %}
+    <div>
+      <span class="text-aside uppercase">Następny tekst</span>
+      {{ card(nextPost) }}
+    </div>
+  {% endif %}
+</nav></div>

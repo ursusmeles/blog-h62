@@ -2,8 +2,13 @@
 layout: base.njk
 ---
 
-<article class="prose flow">
-  {{ content | safe }}
-</article>
-
+{% include "blocks/hero.njk" %}
 {% include "latest.njk" %}
+
+<div class="cluster" style="--cluster-justify: center;">
+  <a href="/blog/" class="button" button-variant="typographic">
+    Zobacz wszystkie teksty
+  </a>
+</div>
+
+{% include "blocks/newsletter.njk" %}
