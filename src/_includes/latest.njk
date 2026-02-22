@@ -1,37 +1,22 @@
-<section class="post-grid">
+{% from "blocks/post-card.njk" import card %}
+
+<section class="container">
+<div class="post-grid">
     <div class="post-grid__header">
-        <h2>Najnowsze treści</h2>
-        <p>Czytaj ostatnie artykuły.</p>
-        <h3>Kategorie</h3>
-        <ul role="list" class="cluster" style="--cluster-gap: var(--space-s);">
+        <h2>Najnowsze teksty</h2>
+        <p>Ostatnie artykuły na blogu. Zobacz też wszystkie kategorie:</p>
+        <ul role="list" class="cluster">
         {% for category in collections.categoryList %}
-        <li><a href="/categories/{{ category | slugify }}/" class="pill">{{ category }}</a></li>
+        <li><a href="/temat/{{ category | slugify }}/" class="category-tag">{{ category }}</a></li>
         {% endfor %}
         </ul>
+        <a class="button" button-variant="typographic">Zobacz wszystkie</a>
     </div>
-
 {% set postslist = collections.posts | reverse %}
 {% for post in postslist.slice(0, 7) %}
 
-<article class="post-card stack elevated">
-    {% if post.data.image %}
-    <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy">
-    {% else %}
-    <div class="post-card__image-placeholder"></div>
-    {% endif %}
-    
-    <div class="stack post-card__content">
-      <div class="post-card__meta">
-        <time datetime="{{ post.date | dateFilter }}">
-      {{ post.date | dateFilter }}
-      </time>
-        <span class="pill">{{ post.data.category }}</span>
-      </div>
-      <h3 class="post-card__title">{{ post.data.title }}</h3>
-      <p>{{ post.data.description }}</p>
-      <a href="{{ post.url }}" class="button" button-variant="typographic">Czytaj</a>
-    </div>
-  </article>
-  {% endfor %}
+{{ card(post) }}
 
+  {% endfor %}
+</div>
 </section>

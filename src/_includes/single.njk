@@ -10,3 +10,26 @@ layout: base.njk
     <article class="prose flow">
   {{ content | safe }}
     </article>
+
+{% from "blocks/post-card.njk" import card %}
+{% set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+{% set nextPost = collections.posts | getNextCollectionItem(page) %}
+
+<div class="container">
+<nav class="repel post-nav" aria-label="Poprzedni i następny wpis">
+  {# Previous Post: Older than current #}
+  {% if previousPost %}
+    <div>
+      <span>Poprzedni</span>
+      {{ card(previousPost) }}
+    </div>
+  {% endif %}
+
+  {# Next Post: Newer than current #}
+  {% if nextPost %}
+    <div>
+      <span>Następny</span>
+      {{ card(nextPost) }}
+    </div>
+  {% endif %}
+</nav></div>

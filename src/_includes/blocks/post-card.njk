@@ -1,0 +1,21 @@
+{% macro card(post) %}
+<article class="post-card stack elevated">
+    {% if post.data.image %}
+    <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy">
+    {% else %}
+    <div class="post-card__image-placeholder"></div>
+    {% endif %}
+    
+    <div class="stack post-card__content">
+      <div class="post-card__meta">
+        <time datetime="{{ post.date | dateFilter }}">
+      {{ post.date | dateFilter }}
+      </time>
+        <span>{{ post.data.category }}</span>
+      </div>
+      <h3 class="post-card__title">{{ post.data.title }}</h3>
+      <p>{{ post.data.description }}</p>
+      <a href="{{ post.url }}" class="button" button-variant="typographic">Czytaj</a>
+    </div>
+  </article>
+  {% endmacro %}
