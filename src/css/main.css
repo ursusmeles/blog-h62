@@ -346,7 +346,7 @@ textarea:not([rows]) {
 
 /* Anything that has been anchored to should have extra scroll margin */
 :target {
-  scroll-margin-block: 5lh;
+  scroll-margin-block: 1lh;
 }
 
 }
@@ -766,6 +766,17 @@ abbr {
   text-decoration: none;
   border-bottom: var(--stroke-dashed) var(--color-text-secondary);
 }
+
+aside {
+  padding-block: var(--space-m-l);
+  padding-inline: var(--space-m-l);
+  width: fit-content;
+  border: var(--stroke-dashed) var(--color-clickable-less);
+  & h2 {
+    margin: 0;
+  }
+}
+
 }
 
 /* COMPOSITION (structural patterns) */
@@ -1427,8 +1438,10 @@ grid-column: article;
 span.category-tag {
   font-size: var(--step--1);
   padding: 0.1em var(--space-2xs);
+  background-color: var(--color-accent-less);
+  color: var(--color-text);
   &:hover {
-  background-color: var(--color-clickable-muted);
+  background-color: var(--color-accent-less);
   }
 }
 
@@ -1465,7 +1478,7 @@ span.category-tag {
     }
     & .hero__lead { 
       justify-self: end;
-      max-width: 30ch;
+      max-width: 35ch;
     }
   }
   .hero.has-image {
@@ -1516,6 +1529,18 @@ span.category-tag {
   font-size: var(--step-0);
   border-inline-start: 0.25rem solid var(--color-accent-less);
   padding-inline-start: var(--space-m);
+  }
+  & .cluster {
+    --cluster-gap-y: var(--space-3xs);
+    --cluster-gap-x: var(--space-xs);
+  }
+  & .cluster > time::after {
+content: '·';
+margin-inline-start: var(--cluster-gap-x);
+  }
+    & .cluster > time::before {
+content: '·';
+margin-inline-end: var(--cluster-gap-x);
   }
 }
 
@@ -1572,6 +1597,50 @@ h2.newsletter__title {
   content: '🜀'; 
   color: var(--color-accent);
   flex-shrink: 0;
+}
+
+.toc {
+  font-family: monospace;
+}
+
+.toc h2 {
+  font-family: inherit;
+  text-transform: uppercase;
+  font-size: var(--step-1);
+  letter-spacing: 0.1ch;
+  margin-block-end: var(--space-xs);
+  &::before {
+  content: none;
+  display: none;
+}
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: var(--step-0);
+  line-height: var(--tight);
+}
+
+.toc ul ul {
+  margin-inline-start: var(--space-2xs);
+  margin-block-start: var(--space-3xs);
+  padding-inline-start: var(--space-s);
+  border-inline-start: var(--stroke-dashed) var(--color-accent-less);
+}
+
+.toc a {
+  background-image: none;
+  padding-bottom: 0;
+  text-decoration: none;
+  color: var(--color-text);
+  opacity: 0.7;
+  transition: var(--transition-default);
+  &:hover {
+    opacity: 1;
+    filter: none;
+  }
 }
 
 }

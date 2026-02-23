@@ -12,6 +12,11 @@
         <div class="cluster">
         {% if category %}<span class="category-tag">{{ category }}</span>{% endif %}
           {% if date %}<time datetime="{{ date | dateFilter }}" class="text-aside">{{ date | dateFilter }}</time>{% endif %}
+  {% if "posts" in tags %}
+    <span class="reading-time text-aside">
+      {{ content | readingTime }} min czytania
+    </span>
+  {% endif %}
         </div>
       {% endif %}
     <p>

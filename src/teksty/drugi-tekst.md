@@ -31,6 +31,15 @@ Zobaczmy, jak to wygląda:
 
 Napiszę więcej tekstu, żeby sprawdzić jak radzi sobie link z obniżonym podkreśleniem w przypadku kilku linijek. Ale wygląda to cyba dobrze, choć dla pewności sprawdzę to jeszcze.
 
+#### To była lista, czas na heading poziomu 4
+#### To była lista, czas na heading poziomu 4
+#### To była lista, czas na heading poziomu 4
+
+## Zobaczmy
+
+### Jak to działa?
+
+#### Hello
 Napiszę więcej tekstu, żeby sprawdzić jak radzi sobie link z obniżonym podkreśleniem w przypadku kilku linijek. Ale wygląda to cyba dobrze, choć dla pewności sprawdzę to jeszcze.
 
 ---

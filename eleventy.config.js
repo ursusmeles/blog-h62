@@ -1,6 +1,24 @@
 import pluginRss from "@11ty/eleventy-plugin-rss";
+import markdownIt from "markdown-it";
+import markdownItAnchor from "markdown-it-anchor";
+import pluginToc from "eleventy-plugin-toc";
 
 export default async function(eleventyConfig) {
+
+  const mdLib = markdownIt({ html: true }).use(markdownItAnchor, {
+    permalink: markdownItAnchor.permalink.headerLink(),
+    level: [2, 3, 4] // Only create anchors for these levels
+  });
+  eleventyConfig.setLibrary("md", mdLib);
+
+  // 2. Add the ToC Plugin
+  eleventyConfig.addPlugin(pluginToc, {
+    tags: ['h2', 'h3', 'h4'],
+    wrapper: 'div',
+    wrapperClass: 'toc stack',
+    ul: true // Generates nested <ul>
+  });
+
   eleventyConfig.addPlugin(pluginRss);
 
   eleventyConfig.addPassthroughCopy("src/css");
@@ -14,11 +32,20 @@ export default async function(eleventyConfig) {
 
   eleventyConfig.addFilter("dateFilter", (dateObj) => {
     return new Intl.DateTimeFormat("pl-PL", {
-      day: "numeric",
-      month: "long",
+      day: "2-digit",
+      month: "2-digit",
       year: "numeric"
     }).format(dateObj);
   });
+
+  eleventyConfig.addFilter("readingTime", (text) => {
+  const wordsPerMinute = 222;
+  const cleanText = text.replace(/<[^>]*>/g, "");
+  const wordCount = cleanText.split(/\s+/).length;
+  const readingTime = Math.ceil(wordCount / wordsPerMinute);
+  
+  return readingTime;
+});
 
   eleventyConfig.addCollection("categoryList", function(collectionApi) {
     const posts = collectionApi.getFilteredByTag("posts");

@@ -1,0 +1,8 @@
+{% set tocContent = content | toc %}
+
+{% if tocContent %}
+<nav class="toc" aria-labelledby="toc-title">
+  <h2 id="toc-title">Spis treści</h2>
+  {{ tocContent | safe }}
+</nav>
+{% endif %}
