@@ -701,7 +701,7 @@ form > *:not(input[type="hidden"]) + * {
 
   &::placeholder {
     color: var(--color-text);
-    opacity: 0.6;
+    opacity: 0.7;
   }
 }
 
@@ -994,7 +994,7 @@ grid-column: article;
 
 .text-aside {
   font-size: var(--step--1);
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .uppercase {
@@ -1385,7 +1385,7 @@ grid-column: article;
 }
 
 .post-card:hover::before {
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 .post-card .button::before {
@@ -1589,7 +1589,7 @@ h2.newsletter__title {
   --button-bg: var(--gradient-brand);
   --button-hover: var(--gradient-brand);
   --button-text: var(--color-bg);
-  opacity: 0.8;
+  opacity: 0.7;
   &:hover {
     opacity: 1;
   }
@@ -1600,7 +1600,7 @@ h2.newsletter__title {
   --button-hover: transparent;
   --button-text: var(--color-text);
   --button-x-padding: 0.2em;
-  opacity: 0.6;
+  opacity: 0.7;
   font-weight: normal;
   &:hover{
     opacity: 1;

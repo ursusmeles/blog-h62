@@ -1,5 +1,8 @@
-module.exports = function(eleventyConfig) {
-  // Tell 11ty to copy these folders to the output exactly as they are
+import pluginRss from "@11ty/eleventy-plugin-rss";
+
+export default async function(eleventyConfig) {
+  eleventyConfig.addPlugin(pluginRss);
+
   eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/fonts");
@@ -10,11 +13,14 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/img");
 
   eleventyConfig.addFilter("dateFilter", (dateObj) => {
-  return new Intl.DateTimeFormat("pl-PL").format(dateObj);
-});
+    return new Intl.DateTimeFormat("pl-PL", {
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    }).format(dateObj);
+  });
 
-// Category list collection
-eleventyConfig.addCollection("categoryList", function(collectionApi) {
+  eleventyConfig.addCollection("categoryList", function(collectionApi) {
     const posts = collectionApi.getFilteredByTag("posts");
     let categorySet = new Set();
     
@@ -27,12 +33,12 @@ eleventyConfig.addCollection("categoryList", function(collectionApi) {
     return Array.from(categorySet).sort();
   });
 
-return {
-  dir: {
-    input: "src",
-    output: "_site"
-  },
-  markdownTemplateEngine: "njk",
-  htmlTemplateEngine: "njk"
-};
+  return {
+    dir: {
+      input: "src",
+      output: "_site"
+    },
+    markdownTemplateEngine: "njk",
+    htmlTemplateEngine: "njk"
+  };
 };
