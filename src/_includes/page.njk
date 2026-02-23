@@ -2,6 +2,10 @@
 layout: base.njk
 ---
 {% include "blocks/hero.njk" %}
+
     <article class="prose flow">
   {{ content | safe }}
     </article>
+
+{% include "latest.njk" %}
+{% include "blocks/newsletter.njk" %}

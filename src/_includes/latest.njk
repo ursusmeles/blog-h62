@@ -4,13 +4,13 @@
 <div class="post-grid">
     <div class="post-grid__header">
         <h2>Najnowsze na blogu</h2>
-        <p class="text-aside">Ostatnie artykuły na blogu. Zobacz też wszystkie kategorie:</p>
+        <p class="text-aside">Czytaj ostatnie teksty lub przeglądaj kategorie:</p>
         <ul role="list" class="cluster">
         {% for category in collections.categoryList %}
-        <li><a href="/temat/{{ category | slugify }}/" class="category-tag">{{ category }}</a></li>
+        <li><a href="/kategoria/{{ category | slugify }}/" class="category-tag">{{ category }}</a></li>
         {% endfor %}
         </ul>
-        <a class="button" button-variant="typographic">Zobacz wszystkie</a>
+        <a href="/teksty/" class="button" button-variant="typographic">Zobacz wszystko</a>
     </div>
 {% set postslist = collections.posts | reverse %}
 {% for post in postslist.slice(0, 7) %}

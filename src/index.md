@@ -2,7 +2,7 @@
 layout: home.njk
 is_home: true
 title: RPG · sandbox · game design
-lead: Lorem ipsum sit dolor amet, consectetur adipsit elit.
+lead: Wnikliwe artykuły o grach fabularnych. Gry i materiały do sandboxa. Pisane w 100% przez człowieka.
 buttonText: Ostatnie teksty
-buttonUrl: /blog/
+buttonUrl: /teksty/
 ---
