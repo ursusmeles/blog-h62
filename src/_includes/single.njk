@@ -4,10 +4,9 @@ layout: base.njk
 {% include "blocks/hero.njk" %}
 
     <article class="prose flow">
-    <aside>
-      {% include "blocks/toc.njk" %}
-    </aside>
-  {{ content | safe }}
+  {% set tocHtml %}{% include "blocks/toc.njk" %}{% endset %}
+  {{ content | injectToc(tocHtml) | safe }}
+  {% include "blocks/author.njk" %}
     </article>
 
 {% from "blocks/post-card.njk" import card %}

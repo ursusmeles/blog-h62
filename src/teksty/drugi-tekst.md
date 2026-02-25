@@ -6,6 +6,7 @@ og_image: "drugi.png"
 image: "/img/post-alchemy.jpg"
 category: "Kategoria"
 date: 2026-02-20
+toc: true
 ---
 
 A oto link. Napiszę więcej tekstu, żeby sprawdzić jak radzi sobie link z obniżonym podkreśleniem w przypadku kilku linijek. Ale wygląda to cyba dobrze, choć dla pewności sprawdzę to jeszcze.

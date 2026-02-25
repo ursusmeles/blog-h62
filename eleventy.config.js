@@ -47,6 +47,18 @@ export default async function(eleventyConfig) {
   return readingTime;
 });
 
+eleventyConfig.addFilter("injectToc", (content, tocHtml) => {
+  if (!tocHtml) return content;
+  
+  const paragraphEnd = "</p>";
+  const index = content.indexOf(paragraphEnd);
+  
+  if (index === -1) return tocHtml + content; // Fallback: put at top
+  
+  const insertionPoint = index + paragraphEnd.length;
+  return content.slice(0, insertionPoint) + tocHtml + content.slice(insertionPoint);
+});
+
   eleventyConfig.addCollection("categoryList", function(collectionApi) {
     const posts = collectionApi.getFilteredByTag("posts");
     let categorySet = new Set();

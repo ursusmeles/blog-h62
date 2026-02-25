@@ -1,8 +1,15 @@
 {% set tocContent = content | toc %}
 
-{% if tocContent %}
-<nav class="toc elevated" aria-labelledby="toc-title">
-  <h2 id="toc-title">Spis treści</h2>
-  {{ tocContent | safe }}
-</nav>
+{% if toc and tocContent %}
+<aside class="elevated">
+  <details class="toc">
+    <summary>
+      <h2 id="toc-title">Spis treści<span class="text-aside">Otwórz</span></h2>
+      <span class="toc__icon" aria-hidden="true"></span>
+    </summary>
+    <nav class="toc__nav" aria-labelledby="toc-title">
+      {{ tocContent | safe }}
+    </nav>
+  </details>
+</aside>
 {% endif %}

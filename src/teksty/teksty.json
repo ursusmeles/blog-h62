@@ -1,4 +1,7 @@
 {
   "layout": "single.njk",
-  "tags": "posts"
+  "tags": "posts",
+  "author": "Mateusz Nowak",
+  "authorBio": "Moje bio.",
+  "authorPhoto": "/img/mateusz.jpg"
 }
