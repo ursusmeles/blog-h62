@@ -1313,7 +1313,6 @@ grid-column: article;
 
 .post-card {
   position: relative;
-  isolation: isolate;
   height: 100%;
   z-index: 1;
   --stack-space: 0rem;
@@ -1347,21 +1346,20 @@ grid-column: article;
   transition: opacity 0.3s ease;
 }
 
-.post-card:hover,
-.post-card:focus-within {
+.post-card:hover {
   transform: scale(0.99);
 }
 
-.post-card:hover::before,
-.post-card:focus-within::before {
+.post-card:hover::before {
   opacity: 0.7;
 }
 
 .post-card .button::before {
   content: '';
   position: absolute;
-  inset: 0;
+  inset: -999px;
   z-index: 10;
+  cursor: pointer;
 }
 
 .post-card img {
@@ -1404,13 +1402,14 @@ grid-column: article;
   overflow: hidden;
 }
 
-.post-card a {
+.post-card .button {
+  display: flex;
   width: fit-content;
   margin-inline-start: auto;
   margin-inline-end: 0;
   font-size: var(--step--1);
   padding: var(--space-s-m);
-  position: static;
+  position: relative;
 }
 
 .post-nav {
@@ -1769,10 +1768,11 @@ footer.author-bio {
   --button-hover: transparent;
   --button-text: var(--color-text);
   --button-x-padding: 0.2em;
-  opacity: 0.7;
+  opacity: 1;
   font-weight: normal;
+  color: color-mix(in oklch, var(--button-text) 70%, transparent);
   &:hover{
-    opacity: 1;
+    color: var(--button-text);
   }
   &::after {
     display: inline-block;
