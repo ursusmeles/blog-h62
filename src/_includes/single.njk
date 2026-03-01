@@ -6,6 +6,7 @@ layout: base.njk
     <article class="prose flow">
   {% set tocHtml %}{% include "blocks/toc.njk" %}{% endset %}
   {{ content | injectToc(tocHtml) | safe }}
+  {% include "blocks/share.njk" %}
   {% include "blocks/author.njk" %}
     </article>
 

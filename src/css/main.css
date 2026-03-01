@@ -1726,6 +1726,7 @@ h2.newsletter__title {
 .author-bio .stack {
   --stack-space: var(--space-3xs);
   flex: 1;
+  min-width: 25ch;
 }
 
 .author-bio h2::before {
@@ -1739,8 +1740,50 @@ h2.newsletter__title {
 }
 
 footer.author-bio {
+  margin-block-start: var(--space-m-l);
   padding-block-end: var(--space-l-xl);
   }
+
+share-actions {
+    display: block;
+    --stack-space: var(--space-s);
+    margin-block: var(--space-2xl-3xl) 0;
+    padding-inline: var(--space-m-l);
+    padding-block: var(--space-m-l) var(--space-l-xl);
+      & h2 {
+    font-size: var(--step-1);
+    text-transform: uppercase;
+    letter-spacing: 0.1ch;
+    margin: 0;
+    &::before {
+    content: none;
+    display: none;
+    }}
+}
+
+.share-input {
+  flex: 1;
+  min-width: 25ch;
+  padding: var(--space-xs-s) var(--space-s);
+  font-size: var(--step--1);
+  font-family: monospace;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: var(--stroke-thin);
+  border-radius: var(--radius-s);
+
+  /* Prevents iOS Safari from automatically zooming in when tapped */
+  appearance: none; 
+}
+
+.input-group {
+  --cluster-align: stretch;
+  --cluster-justify: flex-start;
+  --cluster-gap-x: var(--space-3xs);
+  --cluster-gap-y: var(--space-3xs);
+  & button {white-space: nowrap; flex-shrink: 0; margin: 0;}
+  }
+
 
 }
 
