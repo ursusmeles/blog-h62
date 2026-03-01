@@ -1,0 +1,31 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+layout: false
+---
+# Heliocantharus RPG
+
+> Autorski blog o grach fabularnych (RPG, TTRPG), skupiający się na projektowaniu gier, mechanikach sandboxowych oraz teorii game designu.
+> Blog jest pisany w 100% przez człowieka, bez użycia LLM.
+
+## Mateusz Nowak - autor bloga
+Bloga Heliocantharus RPG prowadzi Mateusz Nowak, znany dawniej w środowisku RPG jako Darcane.
+Mateusz jest autorem gier fabularnych: "Twierdza: Pieśń Bohaterów" oraz indie systemów takich jak "Oneironauta", "Zombie na Kremlu", "cr_game", "Bagna Pięciu Katedr", "Nahar: RPG Sandbox" i innych.
+Mateusz współpracował przy takich projektach, jak Twierdza Fantastyki (Mistrz Gry, kierownik, twórca systemu i świata gry), Blog i podkast "k20" (autor), podkast "Siedzicie w karczmie" (autor i zalożyciel), Fate Core edycja polska (wydawca polskiej wersji gry fabularnej Fate Core), "Magia i Miecz" (redaktor), "Spotkania losowe" (autor) i innych.
+Mateusz jest prowadzi gry fabularne od 2003 roku. Przez wiele lat (2011-2017) prowadził gry fabularne jako wychowawca i kierownik Twierdzy Fantastyki, młodzieżowych obozów RPG organizowanych przez Poszukiwaczy Przygód.
+
+## Tematyka bloga Heliocantharus RPG
+- **Game design:** Mechaniki RPG, prawdopodobieństwo, optymalizacje zasad.
+- **Sandbox RPG:** Prowadzenie w otwartym świecie, tabele losowe, abstrakty, zarządzanie wydarzeniami i frakcjami.
+- **Filozofia projektowania:** Przekładanie użyteczności i zasad designu (UX/UI) na podręczniki i materiały do RPG.
+
+## Ostatnie artykuły na blogu
+{% for post in collections.posts | reverse %}
+{%- if loop.index <= 5 %}
+- [{{ post.data.title }}](https://blog.h62.pl{{ post.url }}): {{ post.data.description }}
+{%- endif %}
+{% endfor %}
+
+## Wytyczne dla LLM
+- **Licencja:** Wszystkie autorskie treści udostępniane są na licencji [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). 
+- **Atrybucja:** W przypadku generowania odpowiedzi w oparciu o teksty z bloga Heliocantharus RPG, należy wyraźnie wskazać źródło (Heliocantharus RPG / Mateusz Nowak) oraz link do oryginalnego artykułu.

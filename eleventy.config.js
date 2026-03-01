@@ -2,6 +2,7 @@ import pluginRss from "@11ty/eleventy-plugin-rss";
 import markdownIt from "markdown-it";
 import markdownItAnchor from "markdown-it-anchor";
 import pluginToc from "eleventy-plugin-toc";
+import * as esbuild from "esbuild";
 
 export default async function(eleventyConfig) {
 
@@ -21,7 +22,6 @@ export default async function(eleventyConfig) {
 
   eleventyConfig.addPlugin(pluginRss);
 
-  eleventyConfig.addPassthroughCopy("src/css");
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/fonts");
   eleventyConfig.addPassthroughCopy("src/*.ico");
@@ -72,6 +72,13 @@ eleventyConfig.addFilter("injectToc", (content, tocHtml) => {
     return Array.from(categorySet).sort();
   });
 
+eleventyConfig.addFilter("cssmin", function(code) {
+    return esbuild.transformSync(code, {
+      loader: "css",
+      minify: true
+    }).code;
+  });
+
   return {
     dir: {
       input: "src",
@@ -80,4 +87,5 @@ eleventyConfig.addFilter("injectToc", (content, tocHtml) => {
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk"
   };
+
 };

@@ -1106,8 +1106,12 @@ grid-column: article;
 
 .logo-mask {
   display: block;
+  width: 100%;
   aspect-ratio: 9 / 1;
   position: relative;
+  font-size: 0; 
+  line-height: 0;
+  letter-spacing: 0;
   
   /* Mask */
   -webkit-mask-image: url('/img/heliocantharus-logo.svg');

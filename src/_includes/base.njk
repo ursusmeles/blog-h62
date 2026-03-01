@@ -17,7 +17,16 @@
   <meta name="twitter:title" content="{{ title or 'Blog o RPG'}} | Heliocantharus RPG">
   <meta name="twitter:description" content="{{ description or 'Materiały RPG, tabele i poradniki do stylu gry typu sandbox' }}">
   <meta name="twitter:image" content="https://blog.h62.pl/images/{{ og_image or 'heliocantharus.png' }}">
-  <link rel="stylesheet" href="/css/main.css">
+  <link rel="preload" href="/fonts/abcsolar.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/ibm-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/ibm-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/ibm-italics.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+{% set css %}
+  {% include "css/main.css" %}
+{% endset %}
+{{ css | cssmin | safe }}
+  </style>
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
