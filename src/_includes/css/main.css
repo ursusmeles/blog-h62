@@ -43,7 +43,8 @@
 @layer tokens {
   :root {
     /* Spacing Scale */
-    /* @link https://utopia.fyi/space/calculator?c=360,16,1.125,1440,18,1.2,5,1,&s=0.75|0.5|0.25,1.5|2|3|4|6|10,s-4xl|xs-l|l-2xl&g=s,l,xl,12 */    --space-3xs: clamp(0.25rem, 0.2292rem + 0.0926vw, 0.3125rem);
+    /* @link https://utopia.fyi/space/calculator?c=360,16,1.125,1440,18,1.2,5,1,&s=0.75|0.5|0.25,1.5|2|3|4|6|10,s-4xl|xs-l|l-2xl&g=s,l,xl,12 */    
+    --space-3xs: clamp(0.25rem, 0.2292rem + 0.0926vw, 0.3125rem);
     --space-2xs: clamp(0.5rem, 0.4792rem + 0.0926vw, 0.5625rem);
     --space-xs: clamp(0.75rem, 0.7083rem + 0.1852vw, 0.875rem);
     --space-s: clamp(1rem, 0.9583rem + 0.1852vw, 1.125rem);
@@ -96,17 +97,6 @@
     --radius-s: 0.125rem;
     --radius-m: 0.25rem;
     --radius-l: 0.5rem;
-    --radius-pill: 999px;
-
-    /* Elevation (shadows) */
-    --elevation-1: 0 1px 2px color-mix(in oklch, var(--color-text), transparent 90%);
-    --elevation-2: 0 4px 6px color-mix(in oklch, var(--color-text), transparent 80%);
-    --elevation-3: 0 10px 15px color-mix(in oklch, var(--color-text), transparent 70%);
-
-    /* Z-index */
-    --z-default: 0;
-    --z-dropdown: 1000;
-    --z-modal: 1100;
 
     /* Transition */
     --transition-default: all 0.18s ease-out;
@@ -120,7 +110,7 @@
 
     /* Gradients */
     --gradient-brand: linear-gradient(to right, var(--primary), var(--secondary));
-    --gradient-muted: linear-gradient(to right, var(--primary-d), var(--secondary-d));
+    --gradient-light: linear-gradient(to right, var(--primary-d), var(--secondary-d));
 
     /* Shadows */
     --shadow-primary: oklch(from var(--primary) l c h / 0.25);
@@ -152,8 +142,8 @@
     --secondary-ll:   oklch(0.93  0.11  var(--hue-secondary));
     --secondary-l:    oklch(0.865 0.19  var(--hue-secondary));
     --secondary:      oklch(0.815 0.185   var(--hue-secondary));
-    --secondary-d:    oklch(0.66  0.14  var(--hue-secondary));
-    --secondary-dd:   oklch(0.561 0.12  var(--hue-secondary));
+    --secondary-d:    oklch(0.7  0.17  var(--hue-secondary));
+    --secondary-dd:   oklch(0.58 0.14  var(--hue-secondary));
     --secondary-ddd:  oklch(0.484 0.1   var(--hue-secondary));
     --secondary-dddd: oklch(0.33  0.07  var(--hue-secondary));
 
@@ -177,7 +167,6 @@
     
     --color-accent: var(--primary);
     --color-accent-less: var(--primary-dd);
-    --color-on-accent: var(--secondary);
     
     --color-clickable: var(--secondary);
     --color-selection: var(--secondary-l);
@@ -185,24 +174,28 @@
     --color-clickable-muted: var(--secondary-d);
     --color-clickable-less: var(--secondary-dddd);
 
+    --logo-1: var(--secondary);
+    --logo-2: var(--primary-d);
+    --logo-hover-1: var(--secondary-l);
+    --logo-hover-2: var(--primary-d);
   }
+
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
     --color-bg: var(--offwhite);
     --color-text: var(--offblack);
     --color-text-secondary: var(--primary-ddd);
 
-    --color-surface-level-1: var(--secondary-d);
-    --color-surface-level-2: var(--secondary);
+    --color-surface-level-1: var(--secondary-lll);
+    --color-surface-level-2: var(--secondary-ll);
     --color-surface-level-3: var(--secondary-l);
     
-    --color-border-level-1: var(--secondary-d);
-    --color-border-level-2: var(--secondary-dd);
-    --color-border-level-3: var(--secondary-ddd);
+    --color-border-level-1: var(--secondary-l);
+    --color-border-level-2: var(--secondary);
+    --color-border-level-3: var(--secondary-d);
     
-    --color-accent: var(--secondary);
-    --color-accent-less: var(--secondary-l);
-    --color-on-accent: var(--offwhite);
+    --color-accent: var(--secondary-d);
+    --color-accent-less: var(--secondary-d);
     
     --color-clickable: var(--primary-d); 
     --color-selection: var(--primary-dd);
@@ -217,17 +210,16 @@
     --color-text: var(--offblack);
     --color-text-secondary: var(--primary-ddd);
 
-    --color-surface-level-1: var(--secondary-d);
-    --color-surface-level-2: var(--secondary);
+    --color-surface-level-1: var(--secondary-lll);
+    --color-surface-level-2: var(--secondary-ll);
     --color-surface-level-3: var(--secondary-l);
     
-    --color-border-level-1: var(--secondary-d);
-    --color-border-level-2: var(--secondary-dd);
-    --color-border-level-3: var(--secondary-ddd);
+    --color-border-level-1: var(--secondary-l);
+    --color-border-level-2: var(--secondary);
+    --color-border-level-3: var(--secondary-d);
     
     --color-accent: var(--secondary);
-    --color-accent-less: var(--secondary-l);
-    --color-on-accent: var(--offwhite);
+    --color-accent-less: var(--secondary-d);
     
     --color-clickable: var(--primary-d); 
     --color-selection: var(--primary-dd);
@@ -235,6 +227,10 @@
     --color-clickable-less: var(--primary-l);
     --color-clickable-muted: var(--primary);
 
+    --logo-1: var(--primary);
+    --logo-2: var(--secondary-d);
+    --logo-hover-1: var(--primary-d);
+    --logo-hover-2: var(--secondary-d);
 }
 
 [data-theme="dark"] {
@@ -252,13 +248,18 @@
     
     --color-accent: var(--primary);
     --color-accent-less: var(--primary-dd);
-    --color-on-accent: var(--secondary);
     
     --color-clickable: var(--secondary);
     --color-selection: var(--secondary-l);
     --color-hover: var(--secondary-ll);
     --color-clickable-muted: var(--secondary-d);
-    --color-clickable-less: var(--secondary-dddd);}
+    --color-clickable-less: var(--secondary-dddd);
+  
+    --logo-1: var(--secondary);
+    --logo-2: var(--primary-d);
+    --logo-hover-1: var(--secondary-l);
+    --logo-hover-2: var(--primary-d);
+  }
 }
 
 /* RESET */
@@ -456,15 +457,15 @@ textarea:not([rows]) {
   ins {
   text-decoration: none;
   background: var(--color-accent);
-  color: var(--color-on-accent);
+  color: var(--color-text);
   padding-inline: 0.3em;
 }
 
 code {
   font-family: monospace;
-  background-color: var(--color-surface-level-1);
-  padding: var(--space-3xs) var(--space-2xs);
-  border-radius: var(--radius-s);
+  background-color: var(--color-surface-level-2);
+  padding: var(--space-3xs) var(--space-3xs);
+  border-radius: var(--radius-m);
 }
 
 kbd {
@@ -894,7 +895,7 @@ aside {
 
 .elevated {
   background-color: color-mix(in oklch, var(--color-text), transparent 97%);
-  border-block: var(--stroke-thin) color-mix(in oklch, var(--color-text), transparent 97%);
+  border-block: var(--stroke-thin) color-mix(in oklch, var(--color-text), transparent 93%);
 }
 
 .border-bottom
@@ -962,7 +963,7 @@ aside {
 
     & ::marker {
       font-size: 0.8lh;
-      color: var(--color-accent);
+      color: var(--primary);
     }
   }
 
@@ -1134,8 +1135,8 @@ margin-block-start: var(--space-l-2xl);
   /* Base gradient */
   background: linear-gradient(
     to right, 
-    var(--color-clickable) 30%, 
-    var(--color-accent) 70%
+    var(--logo-1) 30%, 
+    var(--logo-2) 70%
   );
 
   /* Transition */
@@ -1145,8 +1146,8 @@ margin-block-start: var(--space-l-2xl);
     inset: 0;
     background: linear-gradient(
     to right, 
-    var(--color-clickable) 0%, 
-    var(--color-accent) 100%
+    var(--logo-hover-1) 10%, 
+    var(--logo-hover-2) 90%
   );
     opacity: 0;
     transition: opacity 0.4s ease-in-out;
@@ -1156,6 +1157,8 @@ margin-block-start: var(--space-l-2xl);
     transition-delay: 50ms;
   }
 }
+
+
 
 .theme-switch {
   --switch-height: var(--space-l);
@@ -1325,11 +1328,12 @@ margin-block-start: var(--space-l-2xl);
 
 .post-card {
   position: relative;
+  overflow: hidden;
   height: 100%;
   z-index: 1;
   --stack-space: 0rem;
-  overflow: hidden;
   border: var(--stroke-thin);
+  border-color: color-mix(in oklch, var(--color-text), transparent 93%);
   --bg-card: color-mix(in oklch, var(--color-text) 3%, var(--color-bg));
    background: linear-gradient(
       to bottom, 
@@ -1337,7 +1341,6 @@ margin-block-start: var(--space-l-2xl);
      var(--color-bg) 70%,
       var(--color-bg)
     ) padding-box;
-  border-color: color-mix(in oklch, var(--color-text), transparent 97%);
   transition: var(--transition-fade);
 }
 
@@ -1471,7 +1474,7 @@ span.category-tag {
   gap: var(--space-m-l);
   padding: var(--space-xl-2xl) var(--space-m-l);
   margin-block-end: var(--space-xs-l);
-  border-block: var(--stroke-thin) color-mix(in oklch, var(--color-text), transparent 97%);
+  border-block: var(--stroke-thin) color-mix(in oklch, var(--color-text), transparent 93%);
   grid-template-areas: 
     "title"
     "lead"
@@ -1592,7 +1595,7 @@ margin-inline-end: var(--cluster-gap-x);
 
 h2.newsletter__title {
   position: absolute;
-  top: calc(var(--space-l) * -1.2); /* Floats slightly above the border */
+  top: calc(var(--space-l) * -1.3); /* Floats slightly above the border */
   right: 0;
   margin: 0;
   font-size: var(--step-5);
@@ -1623,7 +1626,7 @@ h2.newsletter__title {
 
 .benefit::before {
   content: '🜚'; 
-  color: var(--color-accent);
+  color: var(--primary);
   flex-shrink: 0;
 }
 
@@ -1824,7 +1827,7 @@ share-actions {
   top: var(--top-offset);
   z-index: var(--index);
   height: fit-content;
-  min-height: 25rem;
+  min-height: 30rem;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--color-clickable) transparent;
