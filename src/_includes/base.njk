@@ -6,21 +6,24 @@
 
   <link rel="canonical" href="https://blog.h62.pl{{ page.url }}">
   <title>{{ title or 'Blog o RPG'}} | Heliocantharus RPG</title>
+  <meta name="description" content="{{ description or 'Inspirowany alchemią blog o grach fabularnych. Artykuły, materiały do sandboxa i gry niezależne. Pisane w 100% przez człowieka. ' }}">
 
-  <meta name="description" content="{{ description or 'Materiały RPG, tabele i poradniki do stylu gry typu sandbox' }}">
-  <meta property="og:type" content="website">
+  {% set socialImage = og_image or image or '/og-default.png' %}
+  {% set isPost = page.url and ('/teksty/' in page.url) and (page.url != '/teksty/') %}
+
+  <meta property="og:type" content="{{ 'article' if isPost else 'website' }}">
   <meta property="og:url" content="https://blog.h62.pl{{ page.url }}">
   <meta property="og:title" content="{{ title or 'Blog o RPG'}} | Heliocantharus RPG">
-  <meta property="og:description" content="{{ description or 'Materiały RPG, tabele i poradniki do stylu gry typu sandbox' }}">
-  <meta property="og:image" content="https://blog.h62.pl/images/{{ og_image or 'heliocantharus.png' }}">
+  <meta property="og:description" content="{{ description or 'Inspirowany alchemią blog o grach fabularnych. Artykuły, materiały do sandboxa i gry niezależne. Pisane w 100% przez człowieka.' }}">
+  <meta property="og:image" content="https://blog.h62.pl{{ socialImage }}">
+  
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ title or 'Blog o RPG'}} | Heliocantharus RPG">
-  <meta name="twitter:description" content="{{ description or 'Materiały RPG, tabele i poradniki do stylu gry typu sandbox' }}">
-  <meta name="twitter:image" content="https://blog.h62.pl/images/{{ og_image or 'heliocantharus.png' }}">
+  <meta name="twitter:description" content="{{ description or 'Inspirowany alchemią blog o grach fabularnych. Artykuły, materiały do sandboxa i gry niezależne. Pisane w 100% przez człowieka. ' }}">
+  <meta name="twitter:image" content="https://blog.h62.pl{{ socialImage }}">
+
   <link rel="preload" href="/fonts/abcsolar.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/ibm-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/ibm-700.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/ibm-italics.woff2" as="font" type="font/woff2" crossorigin>
   <style>
 {% set css %}
   {% include "css/main.css" %}

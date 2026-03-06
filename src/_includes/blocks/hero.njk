@@ -3,7 +3,7 @@
 <section class="hero glow {% if image %}has-image{% endif %}">
     {% if image %}
     <div class="hero__image">
-      <img src="{{ image }}" alt="" role="presentation">
+      <img src="{{ image }}" alt="" role="presentation" draggable="false">
     </div>
      {% endif %}
     <{{ headingTag }} class="hero__title">{{ title }}</{{ headingTag }}>
@@ -12,7 +12,7 @@
         <div class="cluster">
         {% if category %}<span class="category-tag">{{ category }}</span>{% endif %}
           {% if date %}<time datetime="{{ date | dateFilter }}" class="text-aside">{{ date | dateFilter }}</time>{% endif %}
-  {% if "posts" in tags %}
+  {% if tags and ('posts' in tags) %}
     <span class="reading-time text-aside">
       {{ content | readingTime }} min czytania
     </span>

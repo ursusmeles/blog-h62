@@ -2,8 +2,9 @@
 title: "Paleta kolorów"
 description: "Pierwszy tekst na blogu. Paleta kolorów jako referencja."
 lead: "Pierwszy tekst na blogu. Paleta kolorów jako referencja."
-og_image: "helloworld.png"
-image: "/img/post-alchemy.jpg"
+og_image: "/img/helloworld.png"
+thumb_image: "/img/helloworld-thumb.webp"
+image: "/img/helloworld.webp" 
 category: "Alchemia"
 date: 2026-02-20
 ---

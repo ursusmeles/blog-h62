@@ -1,5 +1,6 @@
 ---
 layout: page.njk
 title: Materiały do pobrania
-lead: Lorem ipsum sit dolor amet, consectetur adipsit elit.
+lead: Strona w przygotowaniu. Docelowo znajdą się tu gotowe do pobrania gry, moduły i pomoce do sandboksa.
 ---
+Strona w przygotowaniu. Docelowo znajdą się tu gotowe do pobrania gry, moduły i pomoce do sandboksa.

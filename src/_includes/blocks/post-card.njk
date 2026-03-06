@@ -1,7 +1,7 @@
 {% macro card(post) %}
 <article class="post-card stack elevated">
     {% if post.data.image %}
-    <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy">
+    <img src="{{ post.data.thumb_image or post.data.image }}" alt="{{ post.data.title }}" loading="lazy">
     {% else %}
     <div class="post-card__image-placeholder"></div>
     {% endif %}
@@ -17,7 +17,7 @@
       <p>{{ post.data.description }}</p>
       </div>
       <a href="{{ post.url }}" class="button" button-variant="typographic" 
-      aria-label="Czytaj artykuł: {{ post.data.title }}">Czytaj</a>
+      aria-label="Czytaj artykuł: {{ post.data.title }}" draggable="false">Czytaj</a>
 
   </article>
   {% endmacro %}

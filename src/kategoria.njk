@@ -1,0 +1,40 @@
+---
+layout: archive.njk
+pagination:
+  data: collections.categoryList
+  size: 1
+  alias: category
+permalink: "/kategoria/{{ category | slugify }}/index.html"
+eleventyComputed:
+  title: "Kategoria: {{ category }}"
+  lead: "Wszystkie teksty na blogu przypisane do kategorii {{ category }}."
+---
+
+{% from "blocks/post-card.njk" import card %}
+
+{# 1. Categories filter #}
+<nav aria-label="Filtruj według kategorii" class="archive-filters stack">
+  <h2>Kategorie</h2>
+  <ul role="list" class="cluster">
+    <li><a href="/teksty/" class="category-tag">Wszystkie</a></li>
+    {% for cat in collections.categoryList %}
+      <li>
+        <a href="/kategoria/{{ cat | slugify }}/" 
+           class="category-tag" 
+           {% if cat == category %}style="background-color: var(--color-accent-less); color: var(--color-text);"{% endif %}>
+          {{ cat }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
+
+{# 2. Post list #}
+<section class="archive-list stack" aria-label="Lista artykułów">
+  <h2>Artykuły z kategorii {{ category }}</h2>
+  {% for post in collections.posts %}
+    {% if post.data.category == category %}
+      {{ card(post) }}
+    {% endif %}
+  {% endfor %}
+</section>

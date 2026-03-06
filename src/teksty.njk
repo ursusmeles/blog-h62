@@ -1,0 +1,46 @@
+---
+layout: archive.njk
+title: Archiwum tekstów
+lead: Wszystkie opublikowane artykuły z podziałem na tematyczne kategorie.
+pagination:
+  data: collections.posts
+  size: 6
+  alias: paginatedPosts
+  reverse: true
+permalink: "/teksty/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber + 1 }}/{% endif %}index.html"
+---
+
+{% from "blocks/post-card.njk" import card %}
+
+{# 1. Categories #}
+<nav aria-label="Filtruj według kategorii" class="archive-filters stack">
+    <h2>Kategorie</h2>
+  <ul role="list" class="cluster">
+    {% for category in collections.categoryList %}
+      <li><a href="/kategoria/{{ category | slugify }}/" class="category-tag">{{ category }}</a></li>
+    {% endfor %}
+  </ul>
+</nav>
+
+{# 2. Post list #}
+<section class="archive-list stack" aria-label="Lista artykułów">
+    <h2>Artykuły</h2>
+  {% for post in paginatedPosts %}
+{{ card(post) }}
+  {% endfor %}
+</section>
+
+{# 3. Pagination #}
+{% if pagination.pages | length > 1 %}
+<nav aria-label="Nawigacja" class="pagination repel">
+  {% if pagination.href.previous %}
+    <a href="{{ pagination.href.previous }}" class="button" button-variant="typographic" rel="prev">Nowsze</a>
+  {% endif %}
+
+  <span>Strona {{ pagination.pageNumber + 1 }} z {{ pagination.pages | length }}</span>
+
+  {% if pagination.href.next %}
+    <a href="{{ pagination.href.next }}" class="button" button-variant="typographic" rel="next">Starsze</a>
+  {% endif %}
+</nav>
+{% endif %}
