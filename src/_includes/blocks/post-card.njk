@@ -1,7 +1,7 @@
 {% macro card(post) %}
 <article class="post-card stack elevated">
     {% if post.data.image %}
-    <img src="{{ post.data.thumb_image or post.data.image }}" alt="{{ post.data.title }}" loading="lazy">
+    <img src="{{ post.data.thumb_image or post.data.image }}" alt="{{ post.data.title }}" loading="lazy" width="1200" height="675">
     {% else %}
     <div class="post-card__image-placeholder"></div>
     {% endif %}
