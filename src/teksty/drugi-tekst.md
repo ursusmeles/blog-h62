@@ -3,7 +3,7 @@ title: "Tekst na próbę"
 description: "To blog o sandboksie i grach fabularnych w ogóle."
 lead: "Drugi tekst na blogu. Sprawdzamy jak działa post-grid. To będzie coś dłuższego, żebym sprawdził jak w takich sytuacjach zachowują się poszczególne komponenty."
 og_image: "drugi.png"
-image: "/img/post-alchemy.jpg"
+image: "/img/post-alchemy.webp"
 category: "Kategoria"
 date: 2026-02-20
 toc: true
