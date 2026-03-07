@@ -1176,12 +1176,13 @@ margin-block-start: var(--space-l-2xl);
   height: var(--switch-height);
   padding: var(--padding);
 
-  background: var(--color-bg);
-  border: var(--stroke-thin) var(--color-surface-level-1);
+  background: color-mix(in oklch, var(--color-text) 3%, transparent);
+  border: var(--stroke-thin);
+  border-color: color-mix(in oklch, var(--color-text) 5%, transparent);
   border-radius: var(--radius-m);
   
   cursor: pointer;
-  transition: var(--transition-fade);
+  transition: var(--transition-move);
   
   box-sizing: border-box; 
 }
@@ -1194,7 +1195,7 @@ margin-block-start: var(--space-l-2xl);
   
   width: calc(var(--thumb-size) + (var(--padding)));
   height: var(--thumb-size);
-  background: var(--color-surface-level-2);
+  background: var(--color-surface-level-1);
   border-radius: calc(var(--radius-m) * 0.8); /* smaller radius for nested look */
   
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
@@ -1212,7 +1213,7 @@ margin-block-start: var(--space-l-2xl);
   height: 1rem;
   
   color: var(--color-clickable);
-  transition: color 0.3s ease, opacity 0.3s ease;
+  transition: color 0.3s linear, opacity 0.3s ease;
   pointer-events: none; /* Let clicks pass through to the button */
 
   /* Ensure the SVG itself fills the icon container */
@@ -1236,7 +1237,7 @@ margin-block-start: var(--space-l-2xl);
 /* 3. Inactive States */
 [data-theme="dark"] .sun,
 [data-theme="light"] .moon {
-  color: var(--color-clickable-muted);
+  color: var(--color-clickable-less);
   opacity: 1;
 }
 
