@@ -18,11 +18,11 @@ O abstraktach będę jeszcze pisał. W skrócie są to, jak wskazuje ich nazwa, 
 
 Dobrze zaprojektowane abstrakty w rękach MG z doświadczeniem mogą być jedynym sandboksowym narzędziem koniecznym do rozpoczęcia gry, może obok prostej mapy na heksach.
 
-To właśnie mam na myśli, pisząc o *uniwersalnej tabeli abstraktów* - jej szeroko zakrojoną użyteczność. Niekoniecznie zależy nam na tym, żeby tematyka tabeli była uniwersalna, w sensie łatwa do wykorzystania w wielu konwencjach i gatunkach. Zaryzykuję wręcz, że im bardziej zagnieżdżone w świecie gry są nasze abstrakty, tym lepiej.
+To właśnie mam na myśli, pisząc o *uniwersalnej tabeli abstraktów* — jej szeroko zakrojoną użyteczność. Niekoniecznie zależy nam na tym, żeby tematyka tabeli była uniwersalna, w sensie łatwa do wykorzystania w wielu konwencjach i gatunkach. Zaryzykuję wręcz, że im bardziej zagnieżdżone w świecie gry są nasze abstrakty, tym lepiej.
 
 ## Wybór konwencji
 
-Ogrywam aktualnie remaster [Legacy of Kain: Defiance](https://store.steampowered.com/app/3747730/Legacy_of_Kain_Defiance_Remastered/). To klasyczna gra o bogatej historii świata gry i całkiem unikalnej estetyce. Stwórzmy więc tabelę luźno zainspirowaną tym światem - mrocznym fantasy z wampirami w roli głównej.
+Ogrywam aktualnie remaster [Legacy of Kain: Defiance](https://store.steampowered.com/app/3747730/Legacy_of_Kain_Defiance_Remastered/). To klasyczna gra o bogatej historii świata gry i całkiem unikalnej estetyce. Stwórzmy więc tabelę luźno zainspirowaną tym światem — mrocznym fantasy z wampirami w roli głównej.
 
 Powiedzmy, że bohaterowie naszej kampanii są grupą wampirów we wczesnej erze Nosgoth (świata gry). Starają się przetrwać w świecie pełnym łowców wampirów, wzmocnić swoje moce i zgromadzić artefakty, które pomogą im w osiągnięciu dwóch poprzednich celów.
 
@@ -34,7 +34,7 @@ Nie musi to być kość o wielu ściankach, bo na początek nie potrzebujemy wie
 
 *No i kto nie lubi rzucać k12?*
 
-Niech każdy wiersz tabeli zawiera kilka abstraktów - po rzucie będziemy mogli wybrać jeden z nich lub połączyć kilka w unikalne zestawienie. Są inne podejścia, na pewno wrócimy do nich jeszcze na blogu, ale ten sposób wydaje mi się odpowiedni na początek.
+Niech każdy wiersz tabeli zawiera kilka abstraktów — po rzucie będziemy mogli wybrać jeden z nich lub połączyć kilka w unikalne zestawienie. Są inne podejścia, na pewno wrócimy do nich jeszcze na blogu, ale ten sposób wydaje mi się odpowiedni na początek.
 
 ## Jak tworzyć dobre abstrakty?
 
@@ -42,8 +42,8 @@ Dobre abstrakty powinny wspomagać wyobraźnię MG, budząc nietypowe skojarzeni
 
 **Jak to osiągnąć?**
 
-- Abstrakty powinny odwoływać się do wielu różnych elementów świata przedstawionego - miejsc, postaci, wydarzeń, różnych wrażeń zmysłowych, emocji i tak dalej. Nie ograniczaj się np. tylko do miejsc: stworzysz w ten sposób generator lokacji, a nie tabelę abstraktów.
-- Abstrakty powinny być, cóż, abstrakcyjne - łatwe do interpretacji na wiele różnych sposobów. Lepiej napisać *zwaśnione frakcje* niż *kłótnia cechu murarzy ze strażą miejską*. Pierwsze sformułowanie łatwiej wykorzystać poza miastem albo w kompletnie nietypowy sposób (MG rzuca na pogodę; *zwaśnione frakcje* to nadciągający front burzowy). Ta kłótnia murarzy będzie bardziej na miejscu w jakiejś tabeli plotek.
+- Abstrakty powinny odwoływać się do wielu różnych elementów świata przedstawionego — miejsc, postaci, wydarzeń, różnych wrażeń zmysłowych, emocji i tak dalej. Nie ograniczaj się np. tylko do miejsc: stworzysz w ten sposób generator lokacji, a nie tabelę abstraktów.
+- Abstrakty powinny być, cóż, abstrakcyjne — łatwe do interpretacji na wiele różnych sposobów. Lepiej napisać *zwaśnione frakcje* niż *kłótnia cechu murarzy ze strażą miejską*. Pierwsze sformułowanie łatwiej wykorzystać poza miastem albo w kompletnie nietypowy sposób (MG rzuca na pogodę; *zwaśnione frakcje* to nadciągający front burzowy). Ta kłótnia murarzy będzie bardziej na miejscu w jakiejś tabeli plotek.
 - Jak pisałem wyżej, dobrze jeśli abstrakty będą głęboko osadzone w świecie gry. Pozwoli to MG łatwiej wplatać wyniki rzutów kością w wielowątkową opowieść, którą tworzyć będzie razem z graczami w trakcie sandboksowej kampanii.
 
 <figure>
@@ -78,15 +78,15 @@ Celowo jako pierwsze wypisałem kategorie, które będą łatwiejsze do przygoto
 | 11 | zapieczętowane przejście |
 | 12 | Filary (The Pillars) |
 
-Staram się znaleźć balans (ha!) pomiędzy abstrakcją a zagnieżdżeniem w świecie. Nie piszę na przykład *obozowisko łowców wampirów*, tylko po prostu *obozowisko*. Po pierwsze dlatego, że za chwilę przejdziemy do frakcji i postaci. Po drugie dlatego, że nie chcę się ograniczać - a może to obozowisko innej grupy wampirów albo w ogóle leże potworów?
+Staram się znaleźć balans (ha!) pomiędzy abstrakcją a zagnieżdżeniem w świecie. Nie piszę na przykład *obozowisko łowców wampirów*, tylko po prostu *obozowisko*. Po pierwsze dlatego, że za chwilę przejdziemy do frakcji i postaci. Po drugie dlatego, że nie chcę się ograniczać — a może to obozowisko innej grupy wampirów albo w ogóle leże potworów?
 
 Z drugiej strony chcę, żeby to była tabela do gry w świecie Legacy of Kain. Mamy więc choćby [Filary Nosgoth](https://legacyofkain.fandom.com/wiki/Pillars_of_Nosgoth), które są osią fabuły i centralnym miejscem w świecie gry.
 
 ## Dodajemy kolejne abstrakty
 
-Możemy teraz rozbudować tabelę o kolejne dwa abstrakty - postać albo frakcję oraz coś związanego z naturą.
+Możemy teraz rozbudować tabelę o kolejne dwa abstrakty — postać albo frakcję oraz coś związanego z naturą.
 
-Spróbujmy zrobić to tak, żeby abstrakty w tym samym wierszu były w jakiś sposób ze sobą powiązane, w nieoczywisty sposób uzupełniając się nawzajem. Jednocześnie unikajmy zbyt oczywistych połączeń, np. “grób” - “nieumarli”.
+Spróbujmy zrobić to tak, żeby abstrakty w tym samym wierszu były w jakiś sposób ze sobą powiązane, w nieoczywisty sposób uzupełniając się nawzajem. Jednocześnie unikajmy zbyt oczywistych połączeń, np. “grób” — “nieumarli”.
 
 | rzut k12 | abstrakty |
 | --- | --- |
@@ -107,7 +107,7 @@ Tak jak wcześniej, staram się łączyć bardziej szczegółowe elementy typowe
 
 ## Ostatni zestaw pojęć
 
-Na koniec zostawiliśmy sobie najbardziej, cóż, abstrakcyjne pojęcia - emocję lub koncept społeczny. Dobrze dodać do tabeli coś, co pomoże później w generowaniu sytuacji społecznych, doda głębi i znaczenia odwiedzanym miejscom lub napotykanym przeszkodom.
+Na koniec zostawiliśmy sobie najbardziej, cóż, abstrakcyjne pojęcia — emocję lub koncept społeczny. Dobrze dodać do tabeli coś, co pomoże później w generowaniu sytuacji społecznych, doda głębi i znaczenia odwiedzanym miejscom lub napotykanym przeszkodom.
 
 Tak jak wcześniej, staramy się wybrać takie słowa i umieścić je w takich wierszach tabeli, by tworzyły z pozostałymi abstraktami jakąś nieoczywistą całość.
 
@@ -150,15 +150,15 @@ Możliwe interpretacje wyniku:
 
 - płonie pobliska ludzka wioska i jej zdesperowani mieszkańcy szukają schronienia w grobowcach;
 - ktoś dostrzegł postacie graczy i teraz uzbrojony w magię ognia Zakon Sarafan przygotowuje zasadzkę na bohaterów;
-- kręcąc się po cmentarzu, jeden z wampirów znajduje wejście do grobowca dawnego bohatera, który poświęcił życie w obronie Filarów - w środku jest złożony jego magiczny, płomienny miecz.
+- kręcąc się po cmentarzu, jeden z wampirów znajduje wejście do grobowca dawnego bohatera, który poświęcił życie w obronie Filarów — w środku jest złożony jego magiczny, płomienny miecz.
 
 ### Wykorzystanie do małych rzeczy
 
 Tabela abstraktów jest tak uniwersalna, że można z niej korzystać także na znacznie mniejszą skalę. Na przykład:
 
-- Do ustalania pogody. Wynik 4 - mroźny poranek i szron na drzewach. Wynik 8 - słoneczny dzień. Wynik 7 - ulewa.
-- Do spotkań losowych. Wynik 2 - pasterze albo najemna ochrona czarodzieja. Wynik 10 - wróg z przeszłości jednej z postaci. Wynik 12 - świeżo przemieniony, oszalały z żądzy krwi wampir.
-- Do losowania przedmiotów na sprzedaż. Wynik 1 - słabej jakości uzbrojenie, lekarstwa, amulety odstraszające duchy. Wynik 3 - dzieła sztuki, przyprawy korzenne. Wynik 11 -  historyczne manuskrypty, mapy, informacje.
+- Do ustalania pogody. Wynik 4 — mroźny poranek i szron na drzewach. Wynik 8 — słoneczny dzień. Wynik 7 — ulewa.
+- Do spotkań losowych. Wynik 2 — pasterze albo najemna ochrona czarodzieja. Wynik 10 — wróg z przeszłości jednej z postaci. Wynik 12 — świeżo przemieniony, oszalały z żądzy krwi wampir.
+- Do losowania przedmiotów na sprzedaż. Wynik 1 — słabej jakości uzbrojenie, lekarstwa, amulety odstraszające duchy. Wynik 3 — dzieła sztuki, przyprawy korzenne. Wynik 11 —  historyczne manuskrypty, mapy, informacje.
 
 ## Podsumowanie
 
