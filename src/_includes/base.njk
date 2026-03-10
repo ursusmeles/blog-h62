@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="canonical" href="https://blog.h62.pl{{ page.url }}">
+  <link rel="canonical" href="https://rpg.h62.pl{{ page.url }}">
   <title>{{ title or 'Blog o RPG'}} | Heliocantharus RPG</title>
   <meta name="description" content="{{ description or 'Inspirowany alchemią blog o grach fabularnych. Artykuły, materiały do sandboxa i gry niezależne. Pisane w 100% przez człowieka. ' }}">
 
@@ -12,15 +12,15 @@
   {% set isPost = page.url and ('/teksty/' in page.url) and (page.url != '/teksty/') %}
 
   <meta property="og:type" content="{{ 'article' if isPost else 'website' }}">
-  <meta property="og:url" content="https://blog.h62.pl{{ page.url }}">
+  <meta property="og:url" content="https://rpg.h62.pl{{ page.url }}">
   <meta property="og:title" content="{{ title or 'Blog o RPG'}} | Heliocantharus RPG">
   <meta property="og:description" content="{{ description or 'Inspirowany alchemią blog o grach fabularnych. Artykuły, materiały do sandboxa i gry niezależne. Pisane w 100% przez człowieka.' }}">
-  <meta property="og:image" content="https://blog.h62.pl{{ socialImage }}">
+  <meta property="og:image" content="https://rpg.h62.pl{{ socialImage }}">
   
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ title or 'Blog o RPG'}} | Heliocantharus RPG">
   <meta name="twitter:description" content="{{ description or 'Inspirowany alchemią blog o grach fabularnych. Artykuły, materiały do sandboxa i gry niezależne. Pisane w 100% przez człowieka. ' }}">
-  <meta name="twitter:image" content="https://blog.h62.pl{{ socialImage }}">
+  <meta name="twitter:image" content="https://rpg.h62.pl{{ socialImage }}">
 
   <link rel="preload" href="/fonts/abcsolar.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/ibm-regular.woff2" as="font" type="font/woff2" crossorigin>

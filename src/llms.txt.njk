@@ -22,7 +22,7 @@ Mateusz jest prowadzi gry fabularne od 2003 roku. Przez wiele lat (2011-2017) pr
 ## Ostatnie artykuły na blogu
 {% for post in collections.posts | reverse %}
 {%- if loop.index <= 5 %}
-- [{{ post.data.title }}](https://blog.h62.pl{{ post.url }}): {{ post.data.description }}
+- [{{ post.data.title }}](https://rpg.h62.pl{{ post.url }}): {{ post.data.description }}
 {%- endif %}
 {% endfor %}
 

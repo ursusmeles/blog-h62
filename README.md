@@ -1,2 +1,5 @@
 # Heliocantharus RPG
-RPG blog project made in 11ty/Eleventy.
+TTRPG blog project inspired by alchemy, focused on sandbox RPG mechanics and game design.
+Built with Eleventy.
+
+https://rpg.h62.pl

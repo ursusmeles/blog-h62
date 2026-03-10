@@ -8,7 +8,7 @@ layout: false
 {%- for page in collections.all %}
   {%- if not page.data.excludeFromSitemap and page.url %}
   <url>
-    <loc>https://blog.h62.pl{{ page.url }}</loc>
+    <loc>https://rpg.h62.pl{{ page.url }}</loc>
     <lastmod>{{ page.date.toISOString() }}</lastmod>
   </url>
   {%- endif %}
