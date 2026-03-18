@@ -89,6 +89,7 @@
     --tight: 1.1;
     --mid: 1.3;
     --loose: 1.6;
+    --prose: 1.7;
 
     /* Layout */
     --gutter: var(--space-s-4xl);
@@ -934,7 +935,7 @@ aside {
   display: grid;
   grid-template-columns: 
     [article-start] minmax(0, 1fr) 
-    [prose-start] min(70ch, 100%) [prose-end] 
+    [prose-start] min(65ch, 100%) [prose-end] 
     minmax(0, 1fr) [article-end];
 
   /* --- Core Typography --- */
@@ -944,6 +945,7 @@ aside {
   hyphenate-limit-chars: 6 3 3;
   text-wrap: pretty;
   margin-block-end: var(--space-l-2xl);
+  line-height: var(--prose);
 
   /* --- Headings --- */
   & :is(h1, h2, h3, h4, h5) {
@@ -1030,6 +1032,23 @@ aside {
 
   & aside {
     margin-block: var(--space-l-xl) var(--space-m-l);
+  }
+}
+
+/* I want to use a color-mix with a bit of transparency 
+to slightly reduce the contrast of text in dark mode to fight halation. */
+
+[data-theme="dark"] .prose {
+  color: color-mix(in oklch, var(--color-text), transparent 10%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .prose {
+    color: color-mix(in oklch, var(--color-text), transparent 10%);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
