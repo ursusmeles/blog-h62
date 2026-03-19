@@ -67,6 +67,7 @@
     --space-3xl-4xl: clamp(6rem, 4.25rem + 7.7778vw, 11.25rem);
 
     /* Custom pairs */
+    --space-xs-4xl: clamp(0.75rem, -2.75rem + 15.5556vw, 11.25rem);
     --space-s-4xl: clamp(1rem, -2.4167rem + 15.1852vw, 11.25rem);
     --space-xs-l: clamp(0.75rem, 0.25rem + 2.2222vw, 2.25rem);
     --space-l-2xl: clamp(2rem, 1.1667rem + 3.7037vw, 4.5rem);
@@ -92,7 +93,7 @@
     --prose: 1.7;
 
     /* Layout */
-    --gutter: var(--space-s-4xl);
+    --gutter: var(--space-xs-4xl);
 
     /* Border radius */
     --radius-s: 0.125rem;
