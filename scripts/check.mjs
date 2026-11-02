@@ -19,7 +19,7 @@ for(const p of pages.filter(p=>p.url.endsWith('/'))){
 }
 console.log('Publishing regression checks passed.');
 import fs from 'node:fs';
-const css = fs.readFileSync('src/_includes/css/main.css', 'utf8') + fs.readFileSync('src/assets/open-props.css', 'utf8');
+const css = fs.readFileSync('src/_includes/css/main.css', 'utf8');
 const declarations = new Set([...css.matchAll(/(--[\w-]+)\s*:/g)].map(m => m[1]));
 declarations.add('--index'); // Supplied by the Info page markup.
 for (const [, name] of css.matchAll(/var\((--[\w-]+)\s*\)/g)) assert(declarations.has(name), `Undefined token: ${name}`);

@@ -91,7 +91,9 @@
     --tight: 1.1;
     --mid: 1.3;
     --loose: 1.6;
-    --prose: 1.7;
+    --prose: 1.65;
+    --font-size-reading: clamp(1.125rem, 1.08rem + 0.2vw, 1.25rem);
+    --measure-reading: 62ch;
 
     /* Layout */
     --gutter: var(--space-xs-4xl);
@@ -101,10 +103,15 @@
     --radius-m: 0.25rem;
     --radius-l: 0.5rem;
 
-    /* Transition */
-    --transition-default: color 160ms var(--ease-circ-out), background-color 160ms var(--ease-circ-out), box-shadow 160ms var(--ease-circ-out), border-color 160ms var(--ease-circ-out), transform 160ms var(--ease-circ-out), opacity 160ms var(--ease-circ-out), filter 160ms var(--ease-circ-out), background-size 160ms var(--ease-circ-out);
-    --transition-move: transform 160ms var(--ease-circ-out);
-    --transition-fade: opacity 160ms var(--ease-circ-out), transform 160ms var(--ease-circ-out);
+    /* Shared hover timing; decorative links and the seal opt into a slower duration. */
+    /* Circular easing from Open Props. */
+    --ease-circ-out: cubic-bezier(.075,.82,.165,1);
+    --motion-duration: 200ms;
+    --motion-duration-slow: 360ms;
+    --motion-ease: var(--ease-circ-out);
+    --transition-default: color var(--motion-duration) var(--motion-ease), background-color var(--motion-duration) var(--motion-ease), box-shadow var(--motion-duration) var(--motion-ease), border-color var(--motion-duration) var(--motion-ease), transform var(--motion-duration) var(--motion-ease), opacity var(--motion-duration) var(--motion-ease), filter var(--motion-duration) var(--motion-ease), background-size var(--motion-duration) var(--motion-ease);
+    --transition-move: transform var(--motion-duration) var(--motion-ease);
+    --transition-fade: opacity var(--motion-duration) var(--motion-ease), transform var(--motion-duration) var(--motion-ease);
 
     /* Strokes */
     --stroke-thin: 1px solid;
@@ -113,7 +120,6 @@
 
     /* Gradients */
     --gradient-brand: linear-gradient(to right, var(--primary), var(--secondary));
-    --gradient-light: linear-gradient(to right, var(--primary-d), var(--secondary-d));
 
     /* Shadows */
     --shadow-primary: oklch(from var(--primary) l c h / 0.25);
@@ -128,12 +134,10 @@
     /*  Hues */
     --hue-primary: 273;
     --hue-secondary: 162;
-    --hue-offwhite: 273;
+    --hue-offwhite: 85;
     --hue-offblack: 285;
 
     /* Primary palette */
-    --primary-lll:  oklch(0.735 0.14 var(--hue-primary));
-    --primary-ll:   oklch(0.62  0.21 var(--hue-primary));
     --primary-l:    oklch(0.54  0.25 var(--hue-primary));
     --primary:      oklch(0.44  0.26 var(--hue-primary));
     --primary-d:    oklch(0.38  0.24 var(--hue-primary));
@@ -141,17 +145,14 @@
     --primary-ddd:  oklch(0.185 0.12 var(--hue-primary));
 
     /* Secondary palette */
-    --secondary-lll:  oklch(0.965 0.05  var(--hue-secondary));
     --secondary-ll:   oklch(0.93  0.11  var(--hue-secondary));
     --secondary-l:    oklch(0.865 0.19  var(--hue-secondary));
     --secondary:      oklch(0.815 0.185   var(--hue-secondary));
     --secondary-d:    oklch(0.7  0.17  var(--hue-secondary));
-    --secondary-dd:   oklch(0.58 0.14  var(--hue-secondary));
-    --secondary-ddd:  oklch(0.484 0.1   var(--hue-secondary));
     --secondary-dddd: oklch(0.33  0.07  var(--hue-secondary));
 
     /* Off colors */
-    --offwhite: oklch(0.84  0.01 var(--hue-offwhite));
+    --offwhite: oklch(0.84 0.012 var(--hue-offwhite));
     --offblack: oklch(0.16 0.012 var(--hue-offblack));
     --offblack-purple: oklch(0.16 0.04 var(--hue-offblack));
 
@@ -164,9 +165,7 @@
     --color-surface-level-2: var(--primary-ddd);
     --color-surface-level-3: var(--primary-dd);
     
-    --color-border-level-1: var(--primary-ddd);
-    --color-border-level-2: var(--primary-dd);
-    --color-border-level-3: var(--primary-d);
+    --color-border: var(--primary-d);
     
     --color-accent: var(--primary);
     --color-accent-less: var(--primary-dd);
@@ -184,15 +183,13 @@
   }
 
 :root {
-    --light-color-bg: var(--offwhite);
-    --light-color-text: var(--offblack);
+    --light-color-bg: oklch(0.965 0.015 var(--hue-offwhite));
+    --light-color-text: oklch(0.25 0.018 var(--hue-offblack));
     --light-color-text-secondary: var(--primary-ddd);
-    --light-color-surface-level-1: var(--secondary-lll);
-    --light-color-surface-level-2: var(--secondary-ll);
-    --light-color-surface-level-3: var(--secondary-l);
-    --light-color-border-level-1: var(--secondary-l);
-    --light-color-border-level-2: var(--secondary);
-    --light-color-border-level-3: var(--secondary-d);
+    --light-color-surface-level-1: color-mix(in oklch, var(--light-color-bg), var(--secondary) 5%);
+    --light-color-surface-level-2: color-mix(in oklch, var(--light-color-bg), var(--secondary) 12%);
+    --light-color-surface-level-3: color-mix(in oklch, var(--light-color-bg), var(--secondary) 28%);
+    --light-color-border: var(--secondary-d);
     --light-color-accent: var(--secondary);
     --light-color-accent-less: var(--secondary-d);
     --light-color-clickable: var(--primary-d);
@@ -213,9 +210,7 @@
     --color-surface-level-1: var(--light-color-surface-level-1);
     --color-surface-level-2: var(--light-color-surface-level-2);
     --color-surface-level-3: var(--light-color-surface-level-3);
-    --color-border-level-1: var(--light-color-border-level-1);
-    --color-border-level-2: var(--light-color-border-level-2);
-    --color-border-level-3: var(--light-color-border-level-3);
+    --color-border: var(--light-color-border);
     --color-accent: var(--light-color-accent);
     --color-accent-less: var(--light-color-accent-less);
     --color-clickable: var(--light-color-clickable);
@@ -236,9 +231,7 @@
     --color-surface-level-1: var(--light-color-surface-level-1);
     --color-surface-level-2: var(--light-color-surface-level-2);
     --color-surface-level-3: var(--light-color-surface-level-3);
-    --color-border-level-1: var(--light-color-border-level-1);
-    --color-border-level-2: var(--light-color-border-level-2);
-    --color-border-level-3: var(--light-color-border-level-3);
+    --color-border: var(--light-color-border);
     --color-accent: var(--light-color-accent);
     --color-accent-less: var(--light-color-accent-less);
     --color-clickable: var(--light-color-clickable);
@@ -921,85 +914,74 @@ aside {
 }
 
 .prose {
-  /* --- Layout --- */
   display: grid;
-  grid-template-columns: 
-    [article-start] minmax(0, 1fr) 
-    [prose-start] min(65ch, 100%) [prose-end] 
+  grid-template-columns:
+    [article-start] minmax(0, 1fr)
+    [prose-start] min(var(--measure-reading), 100%) [prose-end]
     minmax(0, 1fr) [article-end];
-
-  /* --- Core Typography --- */
-  font-size: var(--step-1);
-  --flow-space: var(--space-s-m);
-  hyphens: auto;
-  hyphenate-limit-chars: 6 3 3;
-  text-wrap: pretty;
-  margin-block-end: var(--space-l-2xl);
+  font-size: var(--font-size-reading);
   line-height: var(--prose);
+  --flow-space: 1em;
+  hyphens: manual;
+  overflow-wrap: break-word;
+  margin-block-end: var(--space-l-2xl);
 
-  /* --- Headings --- */
-  & > :is(h1, h2, h3, h4, h5) {
-    overflow-wrap: anywhere;
+  & > * {
+    grid-column: prose;
+    min-inline-size: 0;
+    margin-block-end: 0;
   }
 
-  /* Logic: Sets a smaller gap for the element immediately following a heading */
-  & :is(h1, h2, h3, h4, h5) + *:not([class]) {
-    --flow-space: var(--space-xs-s);
+  & > :first-child { margin-block-start: 0; }
+  & > figure { margin-inline: 0; }
+
+  & > :is(h2, h3, h4, h5) {
+    max-width: none;
+    line-height: var(--mid);
+    letter-spacing: normal;
   }
 
-  /* Logic: Adds large spacing above headings, unless it's the very first element */
-  & > * + :is(h2, h3, h4, h5) {
-  --flow-space: var(--space-xl);
-    margin-block-start: var(--flow-space);
+  & > h2 {
+    font-size: var(--step-3);
   }
 
-      & > h2::before, & .info-card h2::before {
-      content: "△";
-      display: inline-block;
-      margin-inline-end: 0.4ch;
-      color: var(--color-accent-less);
-    }
-
-  /* --- General List Logic --- */
-  & :is(ul, ol) {
-    --flow-space: var(--space-2xs);
-    padding-inline-start: var(--space-m);
-  }
-
-  & :is(ol, ul):not([class]) li + li {
-    margin-block-start: var(--space-2xs);
-  }
-
-  /* --- Unordered Lists (ul) --- */
-  & ul:not([class]) {
-    list-style-type: disc;
-
-    & > li {
-      padding-inline-start: var(--space-3xs);
-    }
-
-    & ::marker {
-      font-size: 0.8lh;
-      color: var(--primary);
-    }
-  }
-
-  /* --- Ordered Lists (ol) --- */
-  & ol ::marker {
-    font-size: 1em;
+  & > :is(h3, h4, h5) {
+    font-family: var(--font-base);
+    font-size: var(--step-1);
     font-weight: var(--font-bold);
   }
 
+  & > * + :is(h2, h3, h4, h5) {
+    margin-block-start: 2em;
+  }
+
+  & > :is(h2, h3, h4, h5) + * {
+    margin-block-start: 0.65em;
+  }
+
+  & > h2::before, & .info-card h2::before {
+    content: '△';
+    display: inline-block;
+    margin-inline-end: 0.4ch;
+    color: var(--color-accent-less);
+  }
+
+  & > :is(ul, ol) {
+    padding-inline-start: 1.4em;
+  }
+
+  & :is(ul, ol):not([class]) {
+    & li + li { margin-block-start: 0.5em; }
+    & :is(ul, ol) { margin-block: 0.5em 0; }
+    & ::marker { color: var(--color-clickable); }
+  }
+
   & a:not([class]) {
-    background-image: var(--gradient-brand);
-    background-repeat: no-repeat;
-    background-size: 100% 0.15ex;
-    background-position: 0 100%;
-    padding-bottom: 0.25ex;
-    &:hover {
-      background-size: 85% 0.15ex;
-      filter: brightness(1.4);
-    }
+    text-decoration: underline;
+    text-decoration-color: var(--color-clickable);
+    text-decoration-thickness: 0.06em;
+    text-underline-offset: 0.18em;
+    &:hover { color: var(--color-clickable); }
   }
 
   & > p:last-of-type::after {
@@ -1010,40 +992,13 @@ aside {
     margin-inline-start: 0.5ch;
   }
 
-  & footer {
-    margin-block: var(--space-2xl-3xl) 0;
+  & > footer { margin-block: var(--space-2xl-3xl) 0; }
+  & > aside { margin-block: var(--space-l-xl) var(--space-m-l); }
+  & > hr {
+    grid-column: article;
+    width: 100%;
+    margin-block-start: var(--space-l-2xl);
   }
-
-  & aside {
-    margin-block: var(--space-l-xl) var(--space-m-l);
-  }
-}
-
-/* I want to use a color-mix with a bit of transparency 
-to slightly reduce the contrast of text in dark mode to fight halation. */
-
-[data-theme="dark"] .prose {
-  color: color-mix(in oklch, var(--color-text), transparent 10%);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .prose {
-    color: color-mix(in oklch, var(--color-text), transparent 10%);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-}
-
-.prose > * {
-  grid-column: prose;
-}
-
-.prose > hr {
-grid-column: article;
-width: 100%;
-margin-block-start: var(--space-l-2xl);
 }
 
 .text-aside {
@@ -1210,9 +1165,13 @@ margin-block-start: var(--space-l-2xl);
   border-radius: var(--radius-m);
   
   cursor: pointer;
-  transition: var(--transition-move);
   
   box-sizing: border-box; 
+}
+
+.theme-switch__thumb, .theme-switch__icon {
+  transition-duration: var(--motion-duration-slow);
+  transition-timing-function: var(--ease-circ-out);
 }
 
 .theme-switch__thumb {
@@ -1226,7 +1185,7 @@ margin-block-start: var(--space-l-2xl);
   background: var(--color-surface-level-1);
   border-radius: calc(var(--radius-m) * 0.8); /* smaller radius for nested look */
   
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
+  transition-property: transform, background-color;
   z-index: 1;
 }
 
@@ -1241,7 +1200,7 @@ margin-block-start: var(--space-l-2xl);
   height: 1rem;
   
   color: var(--color-clickable);
-  transition: color 0.3s linear, opacity 0.3s ease;
+  transition-property: color, opacity;
   pointer-events: none; /* Let clicks pass through to the button */
 
   /* Ensure the SVG itself fills the icon container */
@@ -1280,6 +1239,7 @@ margin-block-start: var(--space-l-2xl);
 }
 
 .footer__meta a{
+    transition-duration: var(--motion-duration-slow);
     background-image: var(--gradient-brand);
     background-repeat: no-repeat;
     background-size: 100% 0.15ex;
@@ -1319,7 +1279,8 @@ margin-block-start: var(--space-l-2xl);
 }
 
 .site-seal img {
-  transition: var(--transition-default); 
+  transition: var(--transition-default);
+  transition-duration: var(--motion-duration-slow);
   display: block;
   width: 64px;
   height: auto;
@@ -1387,7 +1348,7 @@ margin-block-start: var(--space-l-2xl);
   pointer-events: none;
   z-index: 2;
   opacity: 0;
-  transition: opacity 160ms var(--ease-circ-out);
+  transition: opacity var(--motion-duration) var(--motion-ease);
 }
 
 .post-card:hover {
@@ -1730,7 +1691,7 @@ h2.newsletter__title {
     margin-inline-start: var(--space-s);
     margin-block-start: var(--space-xs);
     padding-inline-start: var(--space-2xs);
-    border-inline-start: var(--stroke-thin) var(--color-border-level-3);
+    border-inline-start: var(--stroke-thin) var(--color-border);
   }
 
   & ul ul:last-child {
@@ -1852,7 +1813,7 @@ share-actions {
 .info-card {
   position: relative;
   background-color: var(--color-bg);
-  border-top: var(--stroke-thin) var(--color-border-level-3);
+  border-top: var(--stroke-thin) var(--color-border);
   padding: var(--space-m-l);
   margin-block-end: var(--space-l-xl);
   box-shadow: var(--shadow-glow-small);
