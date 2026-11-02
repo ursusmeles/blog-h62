@@ -916,9 +916,9 @@ aside {
 .prose {
   display: grid;
   grid-template-columns:
-    [article-start] minmax(0, 1fr)
-    [prose-start] min(var(--measure-reading), 100%) [prose-end]
-    minmax(0, 1fr) [article-end];
+    [article-start] var(--space-m-l)
+    [prose-start] min(var(--measure-reading), calc(100% - 2 * var(--space-m-l))) [prose-end]
+    minmax(var(--space-m-l), 1fr) [article-end];
   font-size: var(--font-size-reading);
   line-height: var(--prose);
   --flow-space: 1em;
@@ -957,6 +957,17 @@ aside {
 
   & > :is(h2, h3, h4, h5) + * {
     margin-block-start: 0.65em;
+  }
+
+  & > :is(img, picture, figure, table),
+  & > p:has(> img:only-child, > picture:only-child) {
+    margin-block: var(--space-m);
+  }
+
+  /* Media owns the gap below it; avoid adding the next element’s flow margin. */
+  & > :is(img, picture, figure, table) + *,
+  & > p:has(> img:only-child, > picture:only-child) + * {
+    margin-block-start: 0;
   }
 
   & > h2::before, & .info-card h2::before {
