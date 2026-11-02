@@ -1473,7 +1473,6 @@ span.category-tag {
 }
 
 .hero.has-image {
-  margin-block-start: var(--space-s-m);
   grid-template-areas: 
     "title"
     "lead"
