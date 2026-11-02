@@ -6,7 +6,7 @@ og_image: "/img/tabela-abstraktow-og.png"
 thumb_image: "/img/tabela-abstraktow-thumb.webp"
 image: "/img/tabela-abstraktow.webp" 
 category: "Sandbox"
-date: 2026-03-08
+date: 2026-11-02
 toc: true
 ---
 

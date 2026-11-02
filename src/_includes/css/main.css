@@ -1467,46 +1467,47 @@ span.category-tag {
 }
 
 .hero {
+  --hero-padding-block: var(--space-l);
   display: grid;
-  gap: var(--space-m-l);
-  padding: var(--space-xl-2xl) var(--space-m-l);
+  gap: var(--space-s-m) var(--space-m-l);
+  padding: var(--hero-padding-block) var(--space-m-l);
   margin-block-end: var(--space-xs-l);
   border-block: var(--stroke-thin) color-mix(in oklch, var(--color-text), transparent 93%);
-  grid-template-areas: 
-    "title"
-    "lead"
-    "button";
+  grid-template-areas: "title" "lead";
+}
+
+.hero:has(> .button) {
+  grid-template-areas: "title" "lead" "button";
 }
 
 .hero.has-image {
-  grid-template-areas: 
-    "title"
-    "lead"
-    "button"
-    "image";
+  grid-template-areas: "title" "lead" "image";
+}
+
+.hero.has-image:has(> .button) {
+  grid-template-areas: "title" "lead" "button" "image";
 }
 
 @media (min-width: 70rem) {
   .hero {
     grid-template-columns: auto 1fr;
-    grid-template-areas: 
-      "title lead"
-      "button lead";
+    grid-template-areas: "title lead";
     align-items: start;
     column-gap: var(--space-l);
-    & .hero__title { 
-      max-width: 10ch;
-    }
-    & .hero__lead { 
+    & .hero__title { max-width: 10ch; }
+    & .hero__lead {
       justify-self: end;
       max-width: 35ch;
     }
   }
+  .hero:has(> .button) {
+    grid-template-areas: "title lead" "button lead";
+  }
   .hero.has-image {
-    grid-template-areas: 
-      "title lead"
-      "button lead"
-      "image image";
+    grid-template-areas: "title lead" "image image";
+  }
+  .hero.has-image:has(> .button) {
+    grid-template-areas: "title lead" "button lead" "image image";
   }
 }
 
@@ -1525,8 +1526,8 @@ span.category-tag {
   grid-area: image;
   margin-inline: calc(var(--space-m-l) * -1);
   width: calc(100% + (var(--space-m-l) * 2));
-  margin-block-end: calc((var(--space-xl-2xl) * -1) + var(--space-m-l));
-  margin-block-start: var(--space-xs-s);
+  margin-block-end: calc((var(--hero-padding-block) * -1) + var(--space-m-l));
+  margin-block-start: 0;
 }
 
 .hero__image img {
@@ -1542,7 +1543,7 @@ span.category-tag {
 }
 
 .hero__lead {
-  --stack-space: var(--space-s);
+  --stack-space: var(--space-xs);
   grid-area: lead; 
   align-self: end;
   max-width: 45ch;
