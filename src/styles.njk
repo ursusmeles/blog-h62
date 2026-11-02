@@ -1,0 +1,6 @@
+---
+permalink: /assets/main.css
+eleventyExcludeFromCollections: true
+layout: false
+---
+{% set css %}{% include "css/main.css" %}{% endset %}{{ css | cssmin | safe }}

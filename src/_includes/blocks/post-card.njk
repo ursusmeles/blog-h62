@@ -8,7 +8,7 @@
     
     <div class="stack post-card__content">
       <div class="post-card__meta text-aside uppercase">
-        <time datetime="{{ post.date | dateFilter }}">
+        <time datetime="{{ post.date | dateToRfc3339 }}">
       {{ post.date | dateFilter }}
       </time>
         <span>{{ post.data.category }}</span>

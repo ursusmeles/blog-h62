@@ -4,32 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="canonical" href="https://rpg.h62.pl{{ page.url }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
   <title>{{ title or 'Blog o RPG'}} | Heliocantharus RPG</title>
   <meta name="description" content="{{ description or 'Inspirowany alchemią blog o grach fabularnych. Artykuły, materiały do sandboxa i gry niezależne. Pisane w 100% przez człowieka. ' }}">
 
   {% set socialImage = og_image or image or '/og-default.png' %}
-  {% set isPost = page.url and ('/teksty/' in page.url) and (page.url != '/teksty/') %}
+  {% set isPost = tags and ('posts' in tags) %}
 
   <meta property="og:type" content="{{ 'article' if isPost else 'website' }}">
-  <meta property="og:url" content="https://rpg.h62.pl{{ page.url }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:title" content="{{ title or 'Blog o RPG'}} | Heliocantharus RPG">
   <meta property="og:description" content="{{ description or 'Inspirowany alchemią blog o grach fabularnych. Artykuły, materiały do sandboxa i gry niezależne. Pisane w 100% przez człowieka.' }}">
-  <meta property="og:image" content="https://rpg.h62.pl{{ socialImage }}">
+  <meta property="og:image" content="{{ site.url }}{{ socialImage }}">
   
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ title or 'Blog o RPG'}} | Heliocantharus RPG">
   <meta name="twitter:description" content="{{ description or 'Inspirowany alchemią blog o grach fabularnych. Artykuły, materiały do sandboxa i gry niezależne. Pisane w 100% przez człowieka. ' }}">
-  <meta name="twitter:image" content="https://rpg.h62.pl{{ socialImage }}">
+  <meta name="twitter:image" content="{{ site.url }}{{ socialImage }}">
 
   <link rel="preload" href="/fonts/abcsolar.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/ibm-regular.woff2" as="font" type="font/woff2" crossorigin>
-  <style>
-{% set css %}
-  {% include "css/main.css" %}
-{% endset %}
-{{ css | cssmin | safe }}
-  </style>
+  <link rel="stylesheet" href="/assets/open-props.css">
+  <link rel="stylesheet" href="/assets/main.css">
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
@@ -37,13 +33,12 @@
   <meta name="apple-mobile-web-app-title" content="Helio62" />
   <link rel="manifest" href="/site.webmanifest" />
   <script>
-  const storageKey = 'helio-theme-pref';
-  const getColorPreference = () => {
-    if (localStorage.getItem(storageKey)) return localStorage.getItem(storageKey);
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  };
-
-  document.documentElement.setAttribute('data-theme', getColorPreference());
+  let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  try {
+    const saved = localStorage.getItem('helio-theme-pref');
+    if (saved === 'light' || saved === 'dark') theme = saved;
+  } catch {}
+  document.documentElement.dataset.theme = theme;
 </script>
 </head>
 <body>
@@ -56,19 +51,6 @@
 </main>
 
 {% include "footer.njk" %}
-<script>
-  const toggle = document.querySelector('#theme-toggle');
-  const root = document.documentElement;
-
-  if (toggle) {
-    toggle.addEventListener('click', () => {
-      const currentTheme = root.getAttribute('data-theme');
-      const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
-      
-      root.setAttribute('data-theme', nextTheme);
-      localStorage.setItem('helio-theme-pref', nextTheme);
-    });
-  }
-</script>
+<script type="module" src="/assets/interactions.js"></script>
 </body>
 </html>

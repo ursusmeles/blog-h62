@@ -1,6 +1,7 @@
 ---
 layout: archive.njk
 pagination:
+  addAllPagesToCollections: true
   data: collections.categoryList
   size: 1
   alias: category
@@ -21,7 +22,7 @@ eleventyComputed:
       <li>
         <a href="/kategoria/{{ cat | slugify }}/" 
            class="category-tag" 
-           {% if cat == category %}style="background-color: var(--color-accent-less); color: var(--color-text);"{% endif %}>
+           {% if cat == category %}aria-current="page"{% endif %}>
           {{ cat }}
         </a>
       </li>
@@ -32,7 +33,7 @@ eleventyComputed:
 {# 2. Post list #}
 <section class="archive-list stack" aria-label="Lista artykułów">
   <h2>Artykuły z kategorii {{ category }}</h2>
-  {% for post in collections.posts %}
+  {% for post in collections.posts | reverse %}
     {% if post.data.category == category %}
       {{ card(post) }}
     {% endif %}

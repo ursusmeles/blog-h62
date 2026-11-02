@@ -1,7 +1,4 @@
 {
   "layout": "single.njk",
-  "tags": "posts",
-  "author": "Mateusz Nowak",
-  "authorBio": "Autor, współwydawca i redaktor gier fabularnych oraz materiałów i magazynów RPG. Mistrz Gry od 2003 roku. Od lat zafascynowany sandboksem.",
-  "authorPhoto": "/img/mateusz.avif"
+  "tags": "posts"
 }

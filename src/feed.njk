@@ -1,27 +1,20 @@
 ---
 permalink: /feed.xml
 eleventyExcludeFromCollections: true
-metadata:
-  title: "Heliocantharus RPG"
-  subtitle: "RPG · sandbox · game design"
-  url: "https://rpg.h62.pl/"
-  feedUrl: "https://rpg.h62.pl/feed.xml"
-  author:
-    name: "Mateusz Nowak"
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>{{ metadata.title }}</title>
-  <subtitle>{{ metadata.subtitle }}</subtitle>
-  <link href="{{ metadata.feedUrl }}" rel="self"/>
-  <link href="{{ metadata.url }}"/>
+  <title>{{ site.title }}</title>
+  <subtitle>{{ 'RPG · sandbox · game design' }}</subtitle>
+  <link href="{{ site.url ~ '/feed.xml' }}" rel="self"/>
+  <link href="{{ site.url }}"/>
   <updated>{{ collections.posts | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
-  <id>{{ metadata.url }}</id>
+  <id>{{ site.url }}</id>
   <author>
-    <name>{{ metadata.author.name }}</name>
+    <name>{{ author.name }}</name>
   </author>
   {%- for post in collections.posts | reverse %}
-{% set absolutePostUrl %}{{ post.url | absoluteUrl(metadata.url) }}{% endset %}
+{% set absolutePostUrl %}{{ post.url | absoluteUrl(site.url) }}{% endset %}
   <entry>
     <title>{{ post.data.title }}</title>
     <link href="{{ absolutePostUrl }}"/>

@@ -1,4 +1,4 @@
-    {% set absolutePostUrl = "https://rpg.h62.pl" ~ page.url %}
+    {% set absolutePostUrl = site.url ~ page.url %}
     <share-actions 
         data-title="{{ title }}" 
         data-text="{{ description }}"
@@ -9,80 +9,10 @@
         
         <div class="cluster input-group">
             <input type="text" readonly value="{{ absolutePostUrl }}" aria-label="Link do artykułu" class="share-input" data-copy-target>
-            <button type="button" button-variant="secondary" class="button" data-copy-trigger aria-label="Skopiuj link do schowka">Kopiuj</button>
+            <button type="button" button-variant="secondary" class="button" data-copy-trigger data-pending aria-label="Skopiuj link do schowka">Kopiuj</button>
+            <button type="button" class="button" data-share-button data-pending>Udostępnij</button>
         </div>
         </div>
-
-        <template data-template>
-        <button class="button" data-share-button>
-            Udostępnij
-            </button>
-        </template>
         
+      <p role="status" data-share-status></p>
     </share-actions>
-    </section>
-
-    <script type="module">
-    class ShareActions extends HTMLElement {
-  connectedCallback() {
-    const template = this.querySelector('[data-template]');
-    const fallback = this.querySelector('[data-fallback]');
-    
-    // copy button
-    const copyTrigger = this.querySelector('[data-copy-trigger]');
-    const copyTarget = this.querySelector('[data-copy-target]');
-    
-    if (copyTrigger && copyTarget) {
-      copyTrigger.addEventListener('click', async () => {
-        try {
-          // clipboard API
-          await navigator.clipboard.writeText(copyTarget.value);
-          
-          // visual feedback
-          const originalText = copyTrigger.innerText;
-          copyTrigger.innerText = 'Skopiowano';
-          copyTrigger.setAttribute('disabled', 'true');
-          
-          // reset
-          setTimeout(() => { 
-            copyTrigger.innerText = originalText; 
-            copyTrigger.removeAttribute('disabled');
-          }, 1000);
-        } catch (err) {
-          console.error('Clipboard copy failed');
-        }
-      });
-    }
-
-    // --- progressive enhancement: native share ---
-    if (!('share' in navigator) || !template || !fallback) return;
-    
-    // inject <template>
-    const inputGroup = this.querySelector('.input-group');
-if (inputGroup) {
-  inputGroup.appendChild(template.content.cloneNode(true));
-}
-
-    const shareButton = this.querySelector('[data-share-button]');
-    
-    // share API
-    if (shareButton) {
-      shareButton.addEventListener('click', async () => {
-        try {
-          await navigator.share({
-            title: this.dataset.title,
-            text: this.dataset.text,
-            url: this.dataset.url
-          });
-        } catch (err) {
-          // if user cancelled share, fail silently
-        }
-      });
-    }
-  }
-}
-
-if ('customElements' in window) {
-  customElements.define('share-actions', ShareActions);
-}
-    </script>
