@@ -6,7 +6,7 @@
 
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
   <title>{{ title or 'Blog o RPG'}} | Heliocantharus RPG</title>
-  <meta name="description" content="{{ description or 'Inspirowany alchemią blog o grach fabularnych. Artykuły, materiały do sandboxa i gry niezależne. Pisane w 100% przez człowieka. ' }}">
+  <meta name="description" content="{{ description or 'Blog o grach fabularnych — artykuły, materiały do sandboxa i gry niezależne. Pisany w 100% przez człowieka.' }}">
 
   {% set socialImage = og_image or image or '/og-default.png' %}
   {% set isPost = tags and ('posts' in tags) %}
@@ -14,12 +14,12 @@
   <meta property="og:type" content="{{ 'article' if isPost else 'website' }}">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:title" content="{{ title or 'Blog o RPG'}} | Heliocantharus RPG">
-  <meta property="og:description" content="{{ description or 'Inspirowany alchemią blog o grach fabularnych. Artykuły, materiały do sandboxa i gry niezależne. Pisane w 100% przez człowieka.' }}">
+  <meta property="og:description" content="{{ description or 'Blog o grach fabularnych — artykuły, materiały do sandboxa i gry niezależne. Pisany w 100% przez człowieka.' }}">
   <meta property="og:image" content="{{ site.url }}{{ socialImage }}">
   
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ title or 'Blog o RPG'}} | Heliocantharus RPG">
-  <meta name="twitter:description" content="{{ description or 'Inspirowany alchemią blog o grach fabularnych. Artykuły, materiały do sandboxa i gry niezależne. Pisane w 100% przez człowieka. ' }}">
+  <meta name="twitter:description" content="{{ description or 'Blog o grach fabularnych — artykuły, materiały do sandboxa i gry niezależne. Pisany w 100% przez człowieka.' }}">
   <meta name="twitter:image" content="{{ site.url }}{{ socialImage }}">
 
   <link rel="preload" href="/fonts/abcsolar.woff2" as="font" type="font/woff2" crossorigin>
