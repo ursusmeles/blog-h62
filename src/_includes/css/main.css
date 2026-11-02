@@ -961,13 +961,8 @@ aside {
 
   & > :is(img, picture, figure, table),
   & > p:has(> img:only-child, > picture:only-child) {
-    margin-block: var(--space-m);
-  }
-
-  /* Media owns the gap below it; avoid adding the next element’s flow margin. */
-  & > :is(img, picture, figure, table) + *,
-  & > p:has(> img:only-child, > picture:only-child) + * {
-    margin-block-start: 0;
+    margin-block-start: calc(var(--space-m) + var(--flow-space));
+    margin-block-end: var(--space-m);
   }
 
   & > h2::before, & .info-card h2::before {
